@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>The Silent Saboteur | Conversly</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@1,400;1,500;1,600&display=swap" rel="stylesheet">
+    <style>
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        :root{
+            --void:#000;--deep:#030304;--base:#070709;--surface:#0c0c10;
+            --glass-1:rgba(255,255,255,0.018);--glass-2:rgba(255,255,255,0.035);--glass-3:rgba(255,255,255,0.055);--glass-4:rgba(255,255,255,0.075);--glass-5:rgba(255,255,255,0.1);
+            --border-1:rgba(255,255,255,0.045);--border-2:rgba(255,255,255,0.08);--border-3:rgba(255,255,255,0.12);--border-4:rgba(255,255,255,0.18);
+            --shine-1:rgba(255,255,255,0.06);--shine-2:rgba(255,255,255,0.1);--shine-3:rgba(255,255,255,0.15);
+            --rose-600:#e11d48;--rose-500:#f43f5e;--rose-400:#fb7185;--rose-300:#fda4af;
+            --orange-600:#ea580c;--orange-500:#f97316;--orange-400:#fb923c;--orange-300:#fdba74;
+            --amber-500:#f59e0b;--amber-400:#fbbf24;
+            --emerald-500:#10b981;--emerald-400:#34d399;
+            --text-100:rgba(255,255,255,0.97);--text-85:rgba(255,255,255,0.85);--text-70:rgba(255,255,255,0.7);--text-50:rgba(255,255,255,0.5);--text-35:rgba(255,255,255,0.35);--text-20:rgba(255,255,255,0.2);
+            --font:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+            --ease:cubic-bezier(0.25,0.46,0.45,0.94);--ease-out:cubic-bezier(0.16,1,0.3,1);--ease-spring:cubic-bezier(0.34,1.56,0.64,1);
+            --blur-sm:12px;--blur-md:24px;--blur-lg:40px;--blur-xl:60px;
+        }
+        html{height:100%;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+        body{font-family:var(--font);background:var(--void);color:var(--text-100);min-height:100dvh;line-height:1.5;overflow-x:hidden}
+
+        .ambient{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+        .ambient-mesh{position:absolute;inset:-50%;background:radial-gradient(ellipse 80% 50% at 50% 0%,rgba(244,63,94,0.12),transparent 60%),radial-gradient(ellipse 60% 40% at 80% 100%,rgba(249,115,22,0.10),transparent 50%),radial-gradient(ellipse 50% 50% at 20% 80%,rgba(251,146,60,0.08),transparent 50%);animation:meshFloat 30s ease-in-out infinite}
+        @keyframes meshFloat{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-2%,2%) scale(1.02)}}
+        .ambient-orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:0.4;mix-blend-mode:screen}
+        .orb-1{width:500px;height:500px;background:radial-gradient(circle,rgba(244,63,94,0.25) 0%,transparent 70%);top:-15%;right:-10%;animation:orb1 20s ease-in-out infinite}
+        .orb-2{width:400px;height:400px;background:radial-gradient(circle,rgba(249,115,22,0.18) 0%,transparent 70%);bottom:-10%;left:-8%;animation:orb2 25s ease-in-out infinite}
+        .orb-3{width:300px;height:300px;background:radial-gradient(circle,rgba(251,146,60,0.14) 0%,transparent 70%);top:40%;left:60%;animation:orb3 22s ease-in-out infinite}
+        @keyframes orb1{0%,100%{transform:translate(0,0)}50%{transform:translate(-40px,30px)}}
+        @keyframes orb2{0%,100%{transform:translate(0,0)}50%{transform:translate(30px,-25px)}}
+        @keyframes orb3{0%,100%{transform:translate(0,0)}50%{transform:translate(-20px,35px)}}
+        .ambient-noise{position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:0.018}
+        .ambient-vignette{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,transparent 0%,rgba(0,0,0,0.4) 100%)}
+
+        .glass{background:linear-gradient(135deg,var(--glass-2) 0%,var(--glass-1) 100%);border:1px solid var(--border-2);border-radius:20px;backdrop-filter:blur(var(--blur-lg)) saturate(180%);-webkit-backdrop-filter:blur(var(--blur-lg)) saturate(180%);box-shadow:0 1px 1px 0 var(--shine-2) inset,0 -1px 1px 0 rgba(0,0,0,0.1) inset,0 0 0 1px var(--glass-1) inset,0 20px 40px -15px rgba(0,0,0,0.5),0 0 1px 0 rgba(255,255,255,0.05);position:relative}
+        .glass::before{content:'';position:absolute;top:0;left:16px;right:16px;height:1px;background:linear-gradient(90deg,transparent 0%,var(--shine-2) 20%,var(--shine-3) 50%,var(--shine-2) 80%,transparent 100%);pointer-events:none}
+        .glass-card{background:linear-gradient(145deg,var(--glass-3) 0%,var(--glass-1) 50%,var(--glass-2) 100%);border:1px solid var(--border-2);border-radius:24px;backdrop-filter:blur(var(--blur-xl)) saturate(200%);-webkit-backdrop-filter:blur(var(--blur-xl)) saturate(200%);box-shadow:0 1px 1px 0 var(--shine-2) inset,0 0 0 1px var(--glass-1) inset,0 25px 50px -12px rgba(0,0,0,0.6),0 0 80px -20px rgba(244,63,94,0.1);position:relative;overflow:hidden}
+        .glass-card::before{content:'';position:absolute;top:0;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,var(--shine-3),transparent);pointer-events:none}
+        .glass-pill{background:linear-gradient(135deg,var(--glass-3) 0%,var(--glass-2) 100%);border:1px solid var(--border-2);border-radius:100px;backdrop-filter:blur(var(--blur-md));-webkit-backdrop-filter:blur(var(--blur-md));box-shadow:0 1px 0 0 var(--shine-1) inset,0 4px 12px -4px rgba(0,0,0,0.3)}
+
+        .app{position:relative;z-index:1;max-width:460px;margin:0 auto;padding:16px;min-height:100dvh;display:flex;flex-direction:column}
+        .topbar{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;margin-bottom:18px}
+        .topbar-brand{font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-35)}
+        .topbar-brand b{background:linear-gradient(135deg,var(--rose-400),var(--orange-400));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:700}
+        .topbar-progress{display:none;align-items:center;gap:8px;padding:6px 12px;background:var(--glass-2);border:1px solid var(--border-1);border-radius:8px}
+        .topbar-dots{display:flex;gap:5px}
+        .topbar-dot{width:8px;height:8px;border-radius:50%;background:var(--glass-4);transition:all 0.3s}
+        .topbar-dot.filled{background:linear-gradient(135deg,var(--rose-400),var(--orange-400))}
+
+        .screen{display:none;flex-direction:column;flex:1}
+        .screen.active{display:flex;animation:screenIn 0.6s var(--ease-out)}
+        @keyframes screenIn{from{opacity:0;transform:translateY(20px) scale(0.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+
+        .intro{flex:1;display:flex;flex-direction:column;justify-content:center;padding:10px 0 30px}
+        .intro-badge{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;margin-bottom:28px;width:fit-content}
+        .intro-badge svg{width:14px;height:14px;color:var(--rose-400)}
+        .intro-badge span{font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;background:linear-gradient(135deg,var(--rose-300),var(--orange-400));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .intro-title{font-size:clamp(34px,8.5vw,44px);font-weight:700;line-height:1.08;letter-spacing:-0.04em;margin-bottom:22px}
+        .intro-title .line{display:block;text-shadow:0 0 80px rgba(255,255,255,0.08)}
+        .intro-title .gradient{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:500;background:linear-gradient(135deg,var(--rose-400) 0%,var(--orange-400) 50%,var(--rose-300) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;background-size:200% 200%;animation:shimmer 8s ease-in-out infinite;filter:drop-shadow(0 0 30px rgba(244,63,94,0.3))}
+        @keyframes shimmer{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+        .intro-desc{font-size:15px;color:var(--text-50);line-height:1.65;margin-bottom:32px;max-width:360px}
+        
+        .stat-card{display:flex;align-items:center;gap:16px;padding:18px 20px;margin-bottom:32px}
+        .stat-icon{width:48px;height:48px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(244,63,94,0.15),rgba(244,63,94,0.05));border:1px solid rgba(244,63,94,0.2);border-radius:14px;flex-shrink:0}
+        .stat-icon svg{width:22px;height:22px;color:var(--rose-400)}
+        .stat-text{font-size:13px;color:var(--text-50);line-height:1.55}
+        .stat-text strong{color:var(--rose-400);font-weight:600}
+        
+        .saboteur-preview{margin-bottom:36px}
+        .saboteur-label{font-size:9px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-20);margin-bottom:14px}
+        .saboteur-list{display:flex;flex-direction:column;gap:8px}
+        .saboteur-chip{display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--glass-1);border:1px solid var(--border-1);border-radius:12px}
+        .saboteur-chip-icon{width:28px;height:28px;display:flex;align-items:center;justify-content:center;background:var(--glass-3);border-radius:8px;font-size:14px}
+        .saboteur-chip-text{font-size:12px;color:var(--text-50);font-weight:500}
+
+        .btn{display:flex;align-items:center;justify-content:center;gap:10px;padding:17px 30px;border:none;border-radius:16px;font-family:var(--font);font-size:14px;font-weight:600;cursor:pointer;transition:all 0.4s var(--ease);position:relative;overflow:hidden}
+        .btn::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,0.1) 0%,transparent 50%);pointer-events:none}
+        .btn-primary{background:linear-gradient(135deg,var(--rose-500) 0%,var(--rose-600) 100%);color:white;box-shadow:0 1px 0 0 rgba(255,255,255,0.15) inset,0 -1px 0 0 rgba(0,0,0,0.1) inset,0 10px 30px -8px rgba(244,63,94,0.5),0 0 0 1px rgba(244,63,94,0.2)}
+        .btn-primary:hover{transform:translateY(-3px);box-shadow:0 1px 0 0 rgba(255,255,255,0.2) inset,0 16px 40px -8px rgba(244,63,94,0.6)}
+        .btn-full{width:100%}
+        .btn svg{width:18px;height:18px}
+
+        /* Game Screen */
+        .game-wrap{flex:1;display:flex;flex-direction:column;justify-content:center}
+        .question-card{padding:32px 24px;margin-bottom:24px;text-align:center}
+        .question-num{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-20);margin-bottom:16px}
+        .question-text{font-size:17px;line-height:1.55;color:var(--text-85);font-weight:500}
+        
+        .options-wrap{display:flex;flex-direction:column;gap:12px}
+        .option{display:flex;align-items:center;gap:14px;padding:18px 20px;background:var(--glass-2);border:1.5px solid var(--border-2);border-radius:16px;cursor:pointer;transition:all 0.3s var(--ease);text-align:left;font-family:var(--font)}
+        .option:hover{background:var(--glass-3);border-color:var(--border-3);transform:translateY(-2px)}
+        .option.selected{border-color:var(--rose-400);background:linear-gradient(135deg,rgba(244,63,94,0.12),rgba(249,115,22,0.06))}
+        .option-letter{width:32px;height:32px;display:flex;align-items:center;justify-content:center;background:var(--glass-3);border:1px solid var(--border-2);border-radius:10px;font-size:12px;font-weight:700;color:var(--text-35);flex-shrink:0}
+        .option.selected .option-letter{background:linear-gradient(135deg,var(--rose-500),var(--orange-500));border-color:transparent;color:white}
+        .option-text{font-size:14px;color:var(--text-70);line-height:1.5}
+
+        /* Results */
+        .results{padding:20px 0}
+        .results-head{text-align:center;margin-bottom:28px}
+        .saboteur-reveal{margin-bottom:24px}
+        .saboteur-reveal-label{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-20);margin-bottom:16px}
+        .saboteur-icon-wrap{width:100px;height:100px;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(244,63,94,0.15),rgba(249,115,22,0.08));border:2px solid rgba(244,63,94,0.25);border-radius:28px;font-size:48px;animation:iconPulse 2s ease-in-out infinite}
+        @keyframes iconPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+        .saboteur-name{font-size:28px;font-weight:800;background:linear-gradient(135deg,var(--rose-400),var(--orange-400));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px;line-height:1.2}
+        .saboteur-tagline{font-size:14px;color:var(--text-50);max-width:300px;margin:0 auto;line-height:1.5;font-style:italic}
+
+        .impact-section{padding:24px;margin-bottom:18px}
+        .impact-title{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-20);margin-bottom:16px}
+        .impact-text{font-size:14px;color:var(--text-70);line-height:1.65}
+
+        .symptoms-section{padding:24px;margin-bottom:18px}
+        .symptoms-title{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-20);margin-bottom:16px}
+        .symptoms-list{display:flex;flex-direction:column;gap:10px}
+        .symptom{display:flex;align-items:flex-start;gap:12px;font-size:13px;color:var(--text-50);line-height:1.5}
+        .symptom::before{content:'';width:6px;height:6px;flex-shrink:0;margin-top:7px;background:var(--rose-400);border-radius:50%}
+
+        .fix-section{padding:24px;background:linear-gradient(135deg,rgba(16,185,129,0.08),rgba(52,211,153,0.04));border:1px solid rgba(16,185,129,0.15);border-radius:20px;margin-bottom:18px;position:relative;overflow:hidden}
+        .fix-section::before{content:'';position:absolute;top:0;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,rgba(16,185,129,0.3),transparent)}
+        .fix-head{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+        .fix-icon{width:42px;height:42px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--emerald-500),#059669);border-radius:12px;box-shadow:0 4px 16px -4px rgba(16,185,129,0.5)}
+        .fix-icon svg{width:20px;height:20px;color:white}
+        .fix-label{font-size:14px;font-weight:600;color:var(--text-100)}
+        .fix-text{font-size:13px;color:var(--text-50);line-height:1.65}
+
+        /* Comparison */
+        .comparison-section{padding:24px;margin-bottom:18px}
+        .comparison-title{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-20);margin-bottom:16px}
+        .comparison-row{display:flex;gap:12px}
+        .comparison-col{flex:1;padding:16px;background:var(--glass-1);border:1px solid var(--border-1);border-radius:14px}
+        .comparison-col.bad{border-color:rgba(244,63,94,0.2)}
+        .comparison-col.good{border-color:rgba(16,185,129,0.2)}
+        .comparison-label{font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px}
+        .comparison-col.bad .comparison-label{color:var(--rose-400)}
+        .comparison-col.good .comparison-label{color:var(--emerald-400)}
+        .comparison-text{font-size:12px;color:var(--text-50);line-height:1.5;font-style:italic}
+
+        /* Pricing */
+        .pricing-section{padding:24px 0;margin-bottom:18px}
+        .pricing-header{text-align:center;margin-bottom:24px}
+        .pricing-title{font-size:20px;font-weight:700;background:linear-gradient(135deg,var(--text-100),var(--rose-300));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px}
+        .pricing-sub{font-size:13px;color:var(--text-35);line-height:1.5}
+        .pricing-cards{display:flex;flex-direction:column;gap:16px}
+        .plan-card{padding:24px;position:relative;transition:all 0.3s var(--ease)}
+        .plan-card:hover{transform:translateY(-4px)}
+        .plan-card.featured{border-color:var(--emerald-400);background:linear-gradient(145deg,rgba(16,185,129,0.12) 0%,var(--glass-1) 50%,var(--glass-2) 100%);margin-top:16px;overflow:visible}
+        .plan-card.featured::before{background:linear-gradient(90deg,transparent,rgba(16,185,129,0.4),transparent)}
+        .plan-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);display:inline-flex;align-items:center;gap:6px;padding:6px 14px;background:linear-gradient(135deg,var(--emerald-500),#059669);border-radius:100px;font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:white;box-shadow:0 4px 16px -4px rgba(16,185,129,0.5)}
+        .plan-badge svg{width:10px;height:10px}
+        .plan-name{font-size:18px;font-weight:700;color:var(--text-100);margin-bottom:4px}
+        .plan-tagline{font-size:12px;color:var(--text-35);margin-bottom:16px}
+        .plan-price{display:flex;align-items:baseline;gap:4px;margin-bottom:20px}
+        .plan-amount{font-size:36px;font-weight:700;background:linear-gradient(135deg,var(--text-100),var(--emerald-300));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .plan-period{font-size:13px;color:var(--text-35)}
+        .plan-features{list-style:none;margin-bottom:24px}
+        .plan-features li{display:flex;align-items:flex-start;gap:10px;font-size:12px;color:var(--text-50);line-height:1.5;margin-bottom:10px}
+        .plan-features li:last-child{margin-bottom:0}
+        .plan-features li::before{content:'';width:16px;height:16px;flex-shrink:0;margin-top:2px;background:linear-gradient(135deg,var(--emerald-500),var(--emerald-400));border-radius:50%;display:flex;align-items:center;justify-content:center;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E");background-size:10px;background-repeat:no-repeat;background-position:center}
+        .plan-btn{width:100%;padding:15px 24px;border:none;border-radius:14px;font-family:var(--font);font-size:14px;font-weight:600;cursor:pointer;transition:all 0.3s var(--ease);display:flex;align-items:center;justify-content:center;gap:8px}
+        .plan-btn svg{width:16px;height:16px}
+        .plan-btn-secondary{background:var(--glass-4);border:1px solid var(--border-2);color:var(--text-85)}
+        .plan-btn-secondary:hover{background:var(--glass-5);border-color:var(--border-3)}
+        .plan-btn-primary{background:linear-gradient(135deg,var(--emerald-500),#059669);color:white;box-shadow:0 1px 0 0 rgba(255,255,255,0.15) inset,0 8px 24px -8px rgba(16,185,129,0.5)}
+        .plan-btn-primary:hover{transform:translateY(-2px);box-shadow:0 1px 0 0 rgba(255,255,255,0.2) inset,0 12px 32px -8px rgba(16,185,129,0.6)}
+
+        .share-section{text-align:center;padding:20px 0;border-top:1px solid var(--border-1);margin-top:8px}
+        .share-btn-link{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;background:var(--glass-2);border:1px solid var(--border-1);border-radius:10px;font-size:12px;font-weight:500;color:var(--text-50);cursor:pointer;transition:all 0.3s}
+        .share-btn-link:hover{background:var(--glass-3);border-color:var(--border-2);color:var(--text-70)}
+        .share-btn-link svg{width:14px;height:14px}
+
+        /* Store Modal */
+        .store-modal-bg{position:fixed;inset:0;background:rgba(0,0,0,0.8);backdrop-filter:blur(16px);z-index:300;opacity:0;visibility:hidden;pointer-events:none;transition:all 0.35s var(--ease)}
+        .store-modal-bg.show{opacity:1;visibility:visible;pointer-events:auto}
+        .store-modal{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0.9);width:calc(100% - 32px);max-width:360px;padding:32px 28px;z-index:301;opacity:0;visibility:hidden;pointer-events:none;transition:all 0.45s var(--ease-spring)}
+        .store-modal.show{opacity:1;visibility:visible;transform:translate(-50%,-50%) scale(1);pointer-events:auto}
+        .store-modal-close{position:absolute;top:16px;right:16px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;background:var(--glass-3);border:1px solid var(--border-1);border-radius:8px;cursor:pointer;transition:all 0.2s}
+        .store-modal-close:hover{background:var(--glass-4)}
+        .store-modal-close svg{width:16px;height:16px;color:var(--text-50)}
+        .store-modal-title{font-size:18px;font-weight:700;color:var(--text-100);text-align:center;margin-bottom:8px}
+        .store-modal-plan{font-size:13px;color:var(--emerald-400);text-align:center;margin-bottom:24px;font-weight:600}
+        .store-btns{display:flex;flex-direction:column;gap:12px}
+        .store-btn{display:flex;align-items:center;gap:14px;padding:16px 20px;background:var(--glass-2);border:1px solid var(--border-2);border-radius:14px;text-decoration:none;color:var(--text-100);transition:all 0.3s var(--ease)}
+        .store-btn:hover{background:var(--glass-4);border-color:var(--border-3);transform:translateY(-2px)}
+        .store-btn-icon{width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:white;border-radius:10px;flex-shrink:0}
+        .store-btn-icon svg{width:24px;height:24px;color:var(--void)}
+        .store-btn-text{flex:1}
+        .store-btn-label{font-size:10px;color:var(--text-35);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:2px}
+        .store-btn-name{font-size:15px;font-weight:600}
+        .store-btn-arrow{width:20px;height:20px;color:var(--text-35)}
+    </style>
+</head>
+<body>
+    <div class="ambient"><div class="ambient-mesh"></div><div class="ambient-orb orb-1"></div><div class="ambient-orb orb-2"></div><div class="ambient-orb orb-3"></div><div class="ambient-noise"></div><div class="ambient-vignette"></div></div>
+
+    <div class="app">
+        <div class="topbar glass">
+            <span class="topbar-brand">Powered by <b>Conversly</b></span>
+            <div class="topbar-progress" id="topProgress">
+                <div class="topbar-dots" id="topDots"></div>
+            </div>
+        </div>
+
+        <!-- INTRO SCREEN -->
+        <div class="screen active" id="introScreen">
+            <div class="intro">
+                <div class="intro-badge glass-pill">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                    <span>90 Second Diagnostic</span>
+                </div>
+                <h1 class="intro-title">
+                    <span class="line">Find Your</span>
+                    <span class="line"><span class="gradient">Silent Saboteur</span></span>
+                </h1>
+                <p class="intro-desc">Discover the ONE hidden communication pattern that's quietly killing your career momentum — and exactly how to fix it.</p>
+                
+                <div class="stat-card glass">
+                    <div class="stat-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    </div>
+                    <div class="stat-text"><strong>93% of professionals</strong> have at least one unconscious communication pattern costing them visibility, credibility, or money.</div>
+                </div>
+
+                <div class="saboteur-preview">
+                    <div class="saboteur-label">The 6 Silent Saboteurs</div>
+                    <div class="saboteur-list">
+                        <div class="saboteur-chip"><span class="saboteur-chip-icon">😅</span><span class="saboteur-chip-text">The Over-Apologizer</span></div>
+                        <div class="saboteur-chip"><span class="saboteur-chip-icon">🤷</span><span class="saboteur-chip-text">The Hedge Master</span></div>
+                        <div class="saboteur-chip"><span class="saboteur-chip-icon">👻</span><span class="saboteur-chip-text">The Credit Deflector</span></div>
+                        <div class="saboteur-chip"><span class="saboteur-chip-icon">🙈</span><span class="saboteur-chip-text">The Conflict Avoider</span></div>
+                        <div class="saboteur-chip"><span class="saboteur-chip-icon">🙋</span><span class="saboteur-chip-text">The Permission Seeker</span></div>
+                        <div class="saboteur-chip"><span class="saboteur-chip-icon">🔇</span><span class="saboteur-chip-text">The Invisible Expert</span></div>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary btn-full" onclick="startGame()">
+                    Find My Saboteur
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- GAME SCREEN -->
+        <div class="screen" id="gameScreen">
+            <div class="game-wrap">
+                <div class="question-card glass-card">
+                    <div class="question-num" id="qNum">Question 1 of 6</div>
+                    <p class="question-text" id="questionText">Loading...</p>
+                </div>
+                <div class="options-wrap" id="optionsWrap"></div>
+            </div>
+        </div>
+
+        <!-- RESULTS SCREEN -->
+        <div class="screen" id="resultsScreen">
+            <div class="results">
+                <div class="results-head">
+                    <div class="saboteur-reveal">
+                        <div class="saboteur-reveal-label">Your Silent Saboteur</div>
+                        <div class="saboteur-icon-wrap" id="saboteurIcon">😅</div>
+                        <div class="saboteur-name" id="saboteurName">The Over-Apologizer</div>
+                        <div class="saboteur-tagline" id="saboteurTagline">"Sorry, just wanted to quickly mention..."</div>
+                    </div>
+                </div>
+
+                <div class="impact-section glass-card">
+                    <div class="impact-title">How It's Hurting You</div>
+                    <p class="impact-text" id="impactText">Loading impact...</p>
+                </div>
+
+                <div class="symptoms-section glass-card">
+                    <div class="symptoms-title">Common Symptoms</div>
+                    <div class="symptoms-list" id="symptomsList"></div>
+                </div>
+
+                <div class="comparison-section glass-card">
+                    <div class="comparison-title">The Shift</div>
+                    <div class="comparison-row">
+                        <div class="comparison-col bad">
+                            <div class="comparison-label">Before</div>
+                            <div class="comparison-text" id="beforeText">"Sorry to bother you, but..."</div>
+                        </div>
+                        <div class="comparison-col good">
+                            <div class="comparison-label">After</div>
+                            <div class="comparison-text" id="afterText">"I have a question about..."</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fix-section">
+                    <div class="fix-head">
+                        <div class="fix-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+                        <span class="fix-label">How to Fix It</span>
+                    </div>
+                    <p class="fix-text" id="fixText">Loading fix...</p>
+                </div>
+
+                <!-- PRICING -->
+                <div class="pricing-section">
+                    <div class="pricing-header">
+                        <div class="pricing-title">Train Away Your Saboteur</div>
+                        <div class="pricing-sub">Practice the patterns that build presence</div>
+                    </div>
+                    <div class="pricing-cards">
+                        <div class="plan-card glass-card">
+                            <div class="plan-name">Starter</div>
+                            <div class="plan-tagline">Break your saboteur patterns</div>
+                            <div class="plan-price"><span class="plan-amount">$12.99</span><span class="plan-period">/ month</span></div>
+                            <ul class="plan-features">
+                                <li>Unlimited AI practice sessions</li>
+                                <li>Pattern-breaking exercises</li>
+                                <li>Real-time delivery feedback</li>
+                            </ul>
+                            <button class="plan-btn plan-btn-secondary" onclick="selectPlan('Starter')">
+                                Start Free Trial
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </button>
+                        </div>
+                        <div class="plan-card glass-card featured">
+                            <div class="plan-badge">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                Most Popular
+                            </div>
+                            <div class="plan-name">Pro</div>
+                            <div class="plan-tagline">Rewire your communication instincts</div>
+                            <div class="plan-price"><span class="plan-amount">$24.99</span><span class="plan-period">/ month</span></div>
+                            <ul class="plan-features">
+                                <li>Everything in Starter</li>
+                                <li>Deep pattern analysis</li>
+                                <li>Advanced scenario training</li>
+                                <li>Personalized coaching insights</li>
+                            </ul>
+                            <button class="plan-btn plan-btn-primary" onclick="selectPlan('Pro')">
+                                Start Free Trial
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="share-section">
+                    <button class="share-btn-link" onclick="shareResults()">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                        Share Your Result
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Store Modal -->
+    <div class="store-modal-bg" id="storeModalBg" onclick="closeStoreModal()"></div>
+    <div class="store-modal glass-card" id="storeModal">
+        <div class="store-modal-close" onclick="closeStoreModal()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </div>
+        <div class="store-modal-title">Download Conversly</div>
+        <div class="store-modal-plan" id="storeModalPlan">Pro Plan Selected</div>
+        <div class="store-btns">
+            <a href="https://apps.apple.com/app/conversly" target="_blank" class="store-btn">
+                <div class="store-btn-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                </div>
+                <div class="store-btn-text">
+                    <div class="store-btn-label">Download on the</div>
+                    <div class="store-btn-name">App Store</div>
+                </div>
+                <svg class="store-btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=com.conversly" target="_blank" class="store-btn">
+                <div class="store-btn-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 20.5v-17c0-.83.67-1.5 1.5-1.5.4 0 .77.15 1.06.44L17.1 11.5c.59.54.59 1.46 0 2L5.56 22.56c-.29.29-.66.44-1.06.44-.83 0-1.5-.67-1.5-1.5zm14.1-8.5L5 2.5v19l12.1-9.5zM20 12l-3-2.5v5l3-2.5z"/></svg>
+                </div>
+                <div class="store-btn-text">
+                    <div class="store-btn-label">Get it on</div>
+                    <div class="store-btn-name">Google Play</div>
+                </div>
+                <svg class="store-btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+        </div>
+    </div>
+
+<script>
+const questions = [
+    {
+        text: "You realize you made a small error in a report after submitting it. How do you address it?",
+        options: [
+            { text: "\"Sorry! I'm so sorry, I just noticed I made a mistake. I feel terrible. Let me fix it right away.\"", saboteur: "apologizer" },
+            { text: "\"I think there might be an issue? Maybe? I could be wrong though.\"", saboteur: "hedger" },
+            { text: "\"The team caught an issue — we're fixing it now.\"", saboteur: "deflector" },
+            { text: "Fix it quietly and hope no one notices", saboteur: "avoider" },
+            { text: "\"Is it okay if I send a corrected version?\"", saboteur: "permission" },
+            { text: "Wait for someone else to bring it up first", saboteur: "invisible" }
+        ]
+    },
+    {
+        text: "You have a strong opinion in a meeting that differs from your manager's view. What do you do?",
+        options: [
+            { text: "\"Sorry, I might be totally off base here, but...\"", saboteur: "apologizer" },
+            { text: "\"I kind of maybe think there could possibly be another angle?\"", saboteur: "hedger" },
+            { text: "Agree publicly, then vent to a colleague later", saboteur: "avoider" },
+            { text: "\"Would it be okay if I shared a different perspective?\"", saboteur: "permission" },
+            { text: "\"I've heard others mention a concern about this approach...\"", saboteur: "deflector" },
+            { text: "Stay silent — they'll figure it out eventually", saboteur: "invisible" }
+        ]
+    },
+    {
+        text: "A colleague takes credit for an idea you shared with them privately. How do you respond?",
+        options: [
+            { text: "\"Sorry, I don't mean to cause drama, but I thought I mentioned that earlier?\"", saboteur: "apologizer" },
+            { text: "Let it go — it's not worth the conflict", saboteur: "avoider" },
+            { text: "\"Oh, the team has been thinking about this together.\"", saboteur: "deflector" },
+            { text: "\"I was sort of thinking something similar, maybe?\"", saboteur: "hedger" },
+            { text: "Wait to see if anyone else notices", saboteur: "invisible" },
+            { text: "\"Do you mind if I add some context since I suggested this earlier?\"", saboteur: "permission" }
+        ]
+    },
+    {
+        text: "Your project succeeded because of your leadership. How do you respond when praised?",
+        options: [
+            { text: "\"Oh, I didn't really do that much. The team did all the work.\"", saboteur: "deflector" },
+            { text: "\"Sorry, I don't deserve all the credit!\"", saboteur: "apologizer" },
+            { text: "\"I guess it went okay? We got a little lucky.\"", saboteur: "hedger" },
+            { text: "Mumble thanks and change the subject quickly", saboteur: "invisible" },
+            { text: "\"Is it okay to share what we learned?\"", saboteur: "permission" },
+            { text: "Deflect by immediately talking about next steps", saboteur: "avoider" }
+        ]
+    },
+    {
+        text: "You need to give feedback to an underperforming team member. How do you approach it?",
+        options: [
+            { text: "\"I'm sorry to bring this up, but I noticed a few things...\"", saboteur: "apologizer" },
+            { text: "\"There might be some areas that could maybe improve?\"", saboteur: "hedger" },
+            { text: "Hint at it and hope they pick up on the subtext", saboteur: "avoider" },
+            { text: "\"Is it okay if we discuss some feedback?\"", saboteur: "permission" },
+            { text: "\"A few people have mentioned some concerns...\"", saboteur: "deflector" },
+            { text: "Put it off until the next review cycle", saboteur: "invisible" }
+        ]
+    },
+    {
+        text: "You're presenting your work to senior leadership. How do you open?",
+        options: [
+            { text: "\"Sorry this is a bit rough, but here's what I have...\"", saboteur: "apologizer" },
+            { text: "\"This is kind of a preliminary idea that might work?\"", saboteur: "hedger" },
+            { text: "\"The team put this together...\"", saboteur: "deflector" },
+            { text: "Rush through it quickly to minimize exposure", saboteur: "invisible" },
+            { text: "\"If you don't mind, I'd like to walk you through...\"", saboteur: "permission" },
+            { text: "Skip the difficult parts to avoid tough questions", saboteur: "avoider" }
+        ]
+    }
+];
+
+const saboteurs = {
+    apologizer: {
+        icon: "😅",
+        name: "The Over-Apologizer",
+        tagline: "\"Sorry, just wanted to quickly mention...\"",
+        impact: "Every unnecessary apology chips away at your authority. You're training people to see your contributions as impositions rather than value. Research shows chronic apologizers are perceived as less competent — even when their work is excellent.",
+        symptoms: [
+            "Starting emails with \"Sorry for the delay\" when you responded in 24 hours",
+            "Apologizing before sharing ideas in meetings",
+            "Saying \"sorry\" when someone bumps into you",
+            "Prefacing requests with \"Sorry to bother you, but...\""
+        ],
+        before: "\"Sorry to bother you, but I had a quick question...\"",
+        after: "\"I have a question about the timeline.\"",
+        fix: "Replace automatic apologies with gratitude or direct statements. \"Sorry for the delay\" becomes \"Thanks for your patience.\" \"Sorry, but I disagree\" becomes \"I see it differently.\" Practice catching yourself for one week and you'll rewire the habit."
+    },
+    hedger: {
+        icon: "🤷",
+        name: "The Hedge Master",
+        tagline: "\"I kind of maybe think this could possibly work?\"",
+        impact: "Qualifiers drain power from every statement. \"I think we should\" carries weight. \"I kind of maybe feel like perhaps we might want to consider\" does not. You're giving people permission to ignore you before you've finished speaking.",
+        symptoms: [
+            "Using \"just\" before requests (\"I just wanted to...\") ",
+            "Ending statements as questions with upward inflection?",
+            "Stacking qualifiers: kind of, sort of, maybe, possibly, perhaps",
+            "Adding \"does that make sense?\" after every point"
+        ],
+        before: "\"I sort of think we might want to maybe consider...\"",
+        after: "\"I recommend we do X. Here's why.\"",
+        fix: "Record yourself in one meeting. Count your hedges. Most people are shocked — the average is 8-12 per meeting. Then practice: make one declarative statement per meeting without qualifiers. Build from there."
+    },
+    deflector: {
+        icon: "👻",
+        name: "The Credit Deflector",
+        tagline: "\"Oh, the team did everything. I barely helped.\"",
+        impact: "You're not being humble — you're being invisible. When you deflect credit, people stop associating wins with you. Over time, your contributions disappear from organizational memory. Others get promoted while you wonder what happened.",
+        symptoms: [
+            "Immediately redirecting compliments to your team",
+            "Using \"we\" even when you did 90% of the work",
+            "Downplaying achievements: \"It wasn't a big deal\"",
+            "Feeling uncomfortable when recognized publicly"
+        ],
+        before: "\"Oh, I didn't really do much. The team deserves the credit.\"",
+        after: "\"Thanks — I led this initiative and the team executed brilliantly.\"",
+        fix: "Practice the \"Yes, and\" response. When praised, say \"Thank you\" first (not \"Oh, it was nothing\"). Then add one specific contribution you made. Acknowledging your work isn't arrogance — it's accurate."
+    },
+    avoider: {
+        icon: "🙈",
+        name: "The Conflict Avoider",
+        tagline: "\"It's fine. Everything's fine. Really.\"",
+        impact: "Every conversation you avoid compounds. That feedback you didn't give? Now it's a performance issue. That boundary you didn't set? Now you're burned out. Avoidance feels safer but creates bigger problems downstream.",
+        symptoms: [
+            "Agreeing in meetings, then complaining privately",
+            "Postponing difficult conversations until they become crises",
+            "Saying \"yes\" when you mean \"no\" to keep the peace",
+            "Hinting at problems instead of stating them directly"
+        ],
+        before: "\"I guess that works... (internally: this is a terrible idea)\"",
+        after: "\"I have a concern about this approach. Can we discuss?\"",
+        fix: "Start small. Pick one low-stakes conversation you've been avoiding. Script your opening line. Deliver it within 48 hours. The discomfort of the conversation is always less than the anxiety of avoiding it."
+    },
+    permission: {
+        icon: "🙋",
+        name: "The Permission Seeker",
+        tagline: "\"Would it be okay if I shared my thoughts?\"",
+        impact: "You're positioning yourself as subordinate even when you have authority. Constantly asking permission signals that your contributions need approval to exist. Leaders don't ask if they can lead — they lead and invite feedback.",
+        symptoms: [
+            "Asking \"Is it okay if...\" before sharing opinions",
+            "Waiting to be called on even when you have the floor",
+            "Checking if it's \"a good time\" for routine requests",
+            "Seeking validation before taking action you're authorized to take"
+        ],
+        before: "\"Would it be okay if I made a suggestion?\"",
+        after: "\"I have a suggestion: [suggestion]. What do you think?\"",
+        fix: "Flip the script. Instead of asking permission to speak, speak and invite reaction. \"Here's my recommendation...\" followed by \"I'd welcome your thoughts\" puts you in a position of contribution, not supplication."
+    },
+    invisible: {
+        icon: "🔇",
+        name: "The Invisible Expert",
+        tagline: "\"They'll notice my work eventually.\"",
+        impact: "Visibility is a skill, not vanity. The people who get promoted aren't always the most talented — they're the ones whose work is seen. If you're waiting to be discovered, you'll be waiting a long time. Your career depends on strategic self-advocacy.",
+        symptoms: [
+            "Doing excellent work that nobody knows about",
+            "Assuming results will \"speak for themselves\"",
+            "Staying silent in meetings even when you have expertise",
+            "Feeling overlooked while less capable peers advance"
+        ],
+        before: "(Stays silent, hopes someone asks for their input)",
+        after: "\"Based on my experience with X, here's what I'd recommend.\"",
+        fix: "Visibility isn't bragging — it's informing. Start with one \"visibility action\" per week: share a win in a team meeting, send an update email on a project, or speak up when your expertise is relevant. Track it. Build the muscle."
+    }
+};
+
+let currentQ = 0;
+let scores = { apologizer: 0, hedger: 0, deflector: 0, avoider: 0, permission: 0, invisible: 0 };
+
+const $ = id => document.getElementById(id);
+
+function showScreen(id) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    $(id).classList.add('active');
+}
+
+function startGame() {
+    currentQ = 0;
+    scores = { apologizer: 0, hedger: 0, deflector: 0, avoider: 0, permission: 0, invisible: 0 };
+    
+    // Setup progress dots
+    const dotsWrap = $('topDots');
+    dotsWrap.innerHTML = '';
+    for (let i = 0; i < questions.length; i++) {
+        const dot = document.createElement('div');
+        dot.className = 'topbar-dot';
+        dotsWrap.appendChild(dot);
+    }
+    $('topProgress').style.display = 'flex';
+    
+    showScreen('gameScreen');
+    loadQuestion();
+}
+
+function loadQuestion() {
+    if (currentQ >= questions.length) {
+        showResults();
+        return;
+    }
+    
+    const q = questions[currentQ];
+    $('qNum').textContent = `Question ${currentQ + 1} of ${questions.length}`;
+    $('questionText').textContent = q.text;
+    
+    // Update dots
+    document.querySelectorAll('.topbar-dot').forEach((dot, i) => {
+        dot.classList.toggle('filled', i < currentQ);
+    });
+    
+    const wrap = $('optionsWrap');
+    wrap.innerHTML = '';
+    const letters = ['A', 'B', 'C', 'D', 'E', 'F'];
+    const shuffled = [...q.options].sort(() => Math.random() - 0.5);
+    
+    shuffled.forEach((opt, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'option';
+        btn.type = 'button';
+        btn.innerHTML = `
+            <span class="option-letter">${letters[i]}</span>
+            <span class="option-text">${opt.text}</span>
+        `;
+        btn._saboteur = opt.saboteur;
+        btn.onclick = () => selectOption(btn, opt.saboteur);
+        wrap.appendChild(btn);
+    });
+}
+
+function selectOption(btn, saboteur) {
+    document.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+    btn.classList.add('selected');
+    
+    scores[saboteur]++;
+    
+    setTimeout(() => {
+        currentQ++;
+        loadQuestion();
+    }, 600);
+}
+
+function showResults() {
+    $('topProgress').style.display = 'none';
+    
+    // Find dominant saboteur
+    const dominant = Object.entries(scores).sort((a, b) => b[1] - a[1])[0][0];
+    const s = saboteurs[dominant];
+    
+    // Populate results
+    $('saboteurIcon').textContent = s.icon;
+    $('saboteurName').textContent = s.name;
+    $('saboteurTagline').textContent = s.tagline;
+    $('impactText').textContent = s.impact;
+    $('beforeText').textContent = s.before;
+    $('afterText').textContent = s.after;
+    $('fixText').textContent = s.fix;
+    
+    // Symptoms
+    const symptomsList = $('symptomsList');
+    symptomsList.innerHTML = '';
+    s.symptoms.forEach(symptom => {
+        const div = document.createElement('div');
+        div.className = 'symptom';
+        div.textContent = symptom;
+        symptomsList.appendChild(div);
+    });
+    
+    showScreen('resultsScreen');
+    
+    window.gameResults = { saboteur: s.name, icon: s.icon };
+}
+
+function shareResults() {
+    const r = window.gameResults;
+    const text = `My Silent Saboteur: ${r.icon} ${r.saboteur}\n\nWhat communication pattern is quietly killing YOUR career?\n\nTake the 90-second diagnostic: ${location.href}`;
+    if (navigator.share) {
+        navigator.share({ title: 'My Silent Saboteur', text, url: location.href }).catch(() => {});
+    } else {
+        navigator.clipboard.writeText(text).then(() => alert('Copied!')).catch(() => alert(text));
+    }
+}
+
+function selectPlan(planName) {
+    $('storeModalPlan').textContent = planName + ' Plan Selected';
+    $('storeModalBg').classList.add('show');
+    $('storeModal').classList.add('show');
+}
+
+function closeStoreModal() {
+    $('storeModalBg').classList.remove('show');
+    $('storeModal').classList.remove('show');
+}
+</script>
+</body>
+</html>
