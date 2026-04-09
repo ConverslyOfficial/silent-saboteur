@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
     <title>The Silent Saboteur | Conversly</title>
+    <meta name="description" content="Discover the hidden communication pattern silently sabotaging your career in 90 seconds. Take the free diagnostic quiz and learn how to fix it with Conversly.">
+    <link rel="icon" type="image/png" href="https://image2url.com/r2/default/images/1775753086637-dd19f16a-66d1-4545-a1c6-cb72a44cf442.png">
+    <meta property="og:title" content="The Silent Saboteur | Conversly">
+    <meta property="og:description" content="Discover the hidden communication pattern silently sabotaging your career in 90 seconds.">
+    <meta property="og:image" content="https://image2url.com/r2/default/images/1775752278024-8616a4ce-8371-4d88-bb5f-b40d6db1c6a1.png">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Silent Saboteur | Conversly">
+    <meta name="twitter:description" content="Discover the hidden communication pattern silently sabotaging your career in 90 seconds.">
+    <meta name="twitter:image" content="https://image2url.com/r2/default/images/1775752278024-8616a4ce-8371-4d88-bb5f-b40d6db1c6a1.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@1,400;1,500;1,600&display=swap" rel="stylesheet">
@@ -45,8 +55,10 @@
         .glass-card::before{content:'';position:absolute;top:0;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,var(--shine-3),transparent);pointer-events:none}
         .glass-pill{background:linear-gradient(135deg,var(--glass-3) 0%,var(--glass-2) 100%);border:1px solid var(--border-2);border-radius:100px;backdrop-filter:blur(var(--blur-md));-webkit-backdrop-filter:blur(var(--blur-md));box-shadow:0 1px 0 0 var(--shine-1) inset,0 4px 12px -4px rgba(0,0,0,0.3)}
 
-        .app{position:relative;z-index:1;max-width:460px;margin:0 auto;padding:16px;min-height:100dvh;display:flex;flex-direction:column}
-        .topbar{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;margin-bottom:18px}
+        .app{position:relative;z-index:1;max-width:460px;margin:0 auto;padding:12px;min-height:100dvh;display:flex;flex-direction:column}
+        @media(max-width:480px){.app{padding:10px 12px}}
+        .topbar{display:flex;justify-content:space-between;align-items:center;padding:10px 16px;margin-bottom:12px}
+        @media(max-width:480px){.topbar{padding:8px 12px;margin-bottom:8px}}
         .topbar-brand{font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-35)}
         .topbar-brand b{background:linear-gradient(135deg,var(--rose-400),var(--orange-400));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:700}
         .topbar-progress{display:none;align-items:center;gap:8px;padding:6px 12px;background:var(--glass-2);border:1px solid var(--border-1);border-radius:8px}
@@ -58,30 +70,41 @@
         .screen.active{display:flex;animation:screenIn 0.6s var(--ease-out)}
         @keyframes screenIn{from{opacity:0;transform:translateY(20px) scale(0.98)}to{opacity:1;transform:translateY(0) scale(1)}}
 
-        .intro{flex:1;display:flex;flex-direction:column;justify-content:center;padding:10px 0 30px}
-        .intro-badge{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;margin-bottom:28px;width:fit-content}
+        .intro{flex:1;display:flex;flex-direction:column;justify-content:center;padding:5px 0 15px}
+        @media(max-width:480px){.intro{padding:0;justify-content:flex-start}}
+        .intro-badge{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;margin-bottom:18px;width:fit-content}
+        @media(max-width:480px){.intro-badge{padding:8px 12px;margin-bottom:12px}}
         .intro-badge svg{width:14px;height:14px;color:var(--rose-400)}
-        .intro-badge span{font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;background:linear-gradient(135deg,var(--rose-300),var(--orange-400));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-        .intro-title{font-size:clamp(34px,8.5vw,44px);font-weight:700;line-height:1.08;letter-spacing:-0.04em;margin-bottom:22px}
+        .intro-badge span{font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;background:linear-gradient(135deg,var(--rose-300),var(--orange-400));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .intro-title{font-size:clamp(28px,7vw,40px);font-weight:700;line-height:1.08;letter-spacing:-0.04em;margin-bottom:16px}
+        @media(max-width:480px){.intro-title{font-size:clamp(26px,6.5vw,34px);margin-bottom:12px}}
         .intro-title .line{display:block;text-shadow:0 0 80px rgba(255,255,255,0.08)}
         .intro-title .gradient{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:500;background:linear-gradient(135deg,var(--rose-400) 0%,var(--orange-400) 50%,var(--rose-300) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;background-size:200% 200%;animation:shimmer 8s ease-in-out infinite;filter:drop-shadow(0 0 30px rgba(244,63,94,0.3))}
         @keyframes shimmer{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
-        .intro-desc{font-size:15px;color:var(--text-50);line-height:1.65;margin-bottom:32px;max-width:360px}
+        .intro-desc{font-size:14px;color:var(--text-50);line-height:1.55;margin-bottom:20px;max-width:360px}
+        @media(max-width:480px){.intro-desc{font-size:13px;margin-bottom:14px;line-height:1.5}}
         
-        .stat-card{display:flex;align-items:center;gap:16px;padding:18px 20px;margin-bottom:32px}
-        .stat-icon{width:48px;height:48px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(244,63,94,0.15),rgba(244,63,94,0.05));border:1px solid rgba(244,63,94,0.2);border-radius:14px;flex-shrink:0}
-        .stat-icon svg{width:22px;height:22px;color:var(--rose-400)}
-        .stat-text{font-size:13px;color:var(--text-50);line-height:1.55}
+        .stat-card{display:flex;align-items:center;gap:14px;padding:14px 16px;margin-bottom:20px}
+        @media(max-width:480px){.stat-card{padding:12px 14px;margin-bottom:14px;gap:12px}}
+        .stat-icon{width:42px;height:42px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(244,63,94,0.15),rgba(244,63,94,0.05));border:1px solid rgba(244,63,94,0.2);border-radius:12px;flex-shrink:0}
+        @media(max-width:480px){.stat-icon{width:38px;height:38px;border-radius:10px}}
+        .stat-icon svg{width:20px;height:20px;color:var(--rose-400)}
+        .stat-text{font-size:12px;color:var(--text-50);line-height:1.5}
+        @media(max-width:480px){.stat-text{font-size:11px}}
         .stat-text strong{color:var(--rose-400);font-weight:600}
         
-        .saboteur-preview{margin-bottom:36px}
-        .saboteur-label{font-size:9px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-20);margin-bottom:14px}
-        .saboteur-list{display:flex;flex-direction:column;gap:8px}
-        .saboteur-chip{display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--glass-1);border:1px solid var(--border-1);border-radius:12px}
-        .saboteur-chip-icon{width:28px;height:28px;display:flex;align-items:center;justify-content:center;background:var(--glass-3);border-radius:8px;font-size:14px}
-        .saboteur-chip-text{font-size:12px;color:var(--text-50);font-weight:500}
+        .saboteur-preview{margin-bottom:22px}
+        @media(max-width:480px){.saboteur-preview{margin-bottom:16px}}
+        .saboteur-label{font-size:9px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-20);margin-bottom:10px}
+        .saboteur-list{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+        @media(max-width:380px){.saboteur-list{grid-template-columns:1fr}}
+        .saboteur-chip{display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--glass-1);border:1px solid var(--border-1);border-radius:10px}
+        .saboteur-chip-icon{width:26px;height:26px;display:flex;align-items:center;justify-content:center;background:var(--glass-3);border-radius:7px}
+        .saboteur-chip-icon svg{width:14px;height:14px;color:var(--rose-400)}
+        .saboteur-chip-text{font-size:11px;color:var(--text-50);font-weight:500}
 
-        .btn{display:flex;align-items:center;justify-content:center;gap:10px;padding:17px 30px;border:none;border-radius:16px;font-family:var(--font);font-size:14px;font-weight:600;cursor:pointer;transition:all 0.4s var(--ease);position:relative;overflow:hidden}
+        .btn{display:flex;align-items:center;justify-content:center;gap:10px;padding:15px 28px;border:none;border-radius:14px;font-family:var(--font);font-size:14px;font-weight:600;cursor:pointer;transition:all 0.4s var(--ease);position:relative;overflow:hidden}
+        @media(max-width:480px){.btn{padding:14px 24px;font-size:13px;border-radius:12px}}
         .btn::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,0.1) 0%,transparent 50%);pointer-events:none}
         .btn-primary{background:linear-gradient(135deg,var(--rose-500) 0%,var(--rose-600) 100%);color:white;box-shadow:0 1px 0 0 rgba(255,255,255,0.15) inset,0 -1px 0 0 rgba(0,0,0,0.1) inset,0 10px 30px -8px rgba(244,63,94,0.5),0 0 0 1px rgba(244,63,94,0.2)}
         .btn-primary:hover{transform:translateY(-3px);box-shadow:0 1px 0 0 rgba(255,255,255,0.2) inset,0 16px 40px -8px rgba(244,63,94,0.6)}
@@ -89,91 +112,158 @@
         .btn svg{width:18px;height:18px}
 
         /* Game Screen */
-        .game-wrap{flex:1;display:flex;flex-direction:column;justify-content:center}
-        .question-card{padding:32px 24px;margin-bottom:24px;text-align:center}
-        .question-num{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-20);margin-bottom:16px}
-        .question-text{font-size:17px;line-height:1.55;color:var(--text-85);font-weight:500}
+        .game-wrap{flex:1;display:flex;flex-direction:column;justify-content:center;padding:0}
+        @media(max-width:480px){.game-wrap{justify-content:flex-start;padding-top:5px}}
+        .question-card{padding:24px 20px;margin-bottom:16px;text-align:center}
+        @media(max-width:480px){.question-card{padding:18px 16px;margin-bottom:12px}}
+        .question-num{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-20);margin-bottom:12px}
+        .question-text{font-size:15px;line-height:1.5;color:var(--text-85);font-weight:500}
+        @media(max-width:480px){.question-text{font-size:14px;line-height:1.45}}
         
-        .options-wrap{display:flex;flex-direction:column;gap:12px}
-        .option{display:flex;align-items:center;gap:14px;padding:18px 20px;background:var(--glass-2);border:1.5px solid var(--border-2);border-radius:16px;cursor:pointer;transition:all 0.3s var(--ease);text-align:left;font-family:var(--font)}
+        .options-wrap{display:flex;flex-direction:column;gap:10px}
+        @media(max-width:480px){.options-wrap{gap:8px}}
+        .option{display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--glass-2);border:1.5px solid var(--border-2);border-radius:14px;cursor:pointer;transition:all 0.3s var(--ease);text-align:left;font-family:var(--font)}
+        @media(max-width:480px){.option{padding:12px 14px;gap:10px;border-radius:12px}}
         .option:hover{background:var(--glass-3);border-color:var(--border-3);transform:translateY(-2px)}
         .option.selected{border-color:var(--rose-400);background:linear-gradient(135deg,rgba(244,63,94,0.12),rgba(249,115,22,0.06))}
-        .option-letter{width:32px;height:32px;display:flex;align-items:center;justify-content:center;background:var(--glass-3);border:1px solid var(--border-2);border-radius:10px;font-size:12px;font-weight:700;color:var(--text-35);flex-shrink:0}
+        .option-letter{width:28px;height:28px;display:flex;align-items:center;justify-content:center;background:var(--glass-3);border:1px solid var(--border-2);border-radius:8px;font-size:11px;font-weight:700;color:var(--text-35);flex-shrink:0}
         .option.selected .option-letter{background:linear-gradient(135deg,var(--rose-500),var(--orange-500));border-color:transparent;color:white}
-        .option-text{font-size:14px;color:var(--text-70);line-height:1.5}
+        .option-text{font-size:13px;color:var(--text-70);line-height:1.45}
+        @media(max-width:480px){.option-text{font-size:12px}}
+        
+        /* Custom input option */
+        .custom-input-wrap{margin-top:10px}
+        @media(max-width:480px){.custom-input-wrap{margin-top:8px}}
+        .custom-input-container{display:flex;gap:10px;padding:14px 16px;background:var(--glass-2);border:1.5px solid var(--border-2);border-radius:14px;transition:all 0.3s var(--ease)}
+        @media(max-width:480px){.custom-input-container{padding:12px 14px;gap:8px;border-radius:12px}}
+        .custom-input-container:focus-within{border-color:var(--rose-400);background:linear-gradient(135deg,rgba(244,63,94,0.08),rgba(249,115,22,0.04))}
+        .custom-input{flex:1;background:transparent;border:none;font-family:var(--font);font-size:13px;color:var(--text-85);outline:none}
+        @media(max-width:480px){.custom-input{font-size:12px}}
+        .custom-input::placeholder{color:var(--text-35)}
+        .custom-input-btn{padding:8px 14px;background:linear-gradient(135deg,var(--glass-4),var(--glass-3));border:1px solid var(--border-2);border-radius:8px;font-family:var(--font);font-size:11px;font-weight:600;color:var(--text-70);cursor:pointer;transition:all 0.2s}
+        .custom-input-btn:hover{background:var(--glass-5);color:var(--text-85)}
+        .custom-input-btn:disabled{opacity:0.4;cursor:not-allowed}
+        
+        /* Stat interstitial */
+        .stat-interstitial{padding:28px 24px;text-align:center}
+        @media(max-width:480px){.stat-interstitial{padding:22px 18px}}
+        .stat-interstitial-icon{width:56px;height:56px;margin:0 auto 18px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(251,191,36,0.15),rgba(251,191,36,0.05));border:1px solid rgba(251,191,36,0.25);border-radius:16px}
+        @media(max-width:480px){.stat-interstitial-icon{width:48px;height:48px;margin-bottom:14px;border-radius:14px}}
+        .stat-interstitial-icon svg{width:26px;height:26px;color:var(--amber-400)}
+        @media(max-width:480px){.stat-interstitial-icon svg{width:22px;height:22px}}
+        .stat-interstitial-label{font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--amber-400);margin-bottom:12px}
+        .stat-interstitial-text{font-size:15px;line-height:1.6;color:var(--text-70);margin-bottom:20px}
+        @media(max-width:480px){.stat-interstitial-text{font-size:14px;margin-bottom:16px}}
+        .stat-interstitial-text strong{color:var(--text-100);font-weight:600}
+        .stat-interstitial-source{font-size:10px;color:var(--text-35);font-style:italic;margin-bottom:20px}
+        @media(max-width:480px){.stat-interstitial-source{margin-bottom:16px}}
+        .stat-continue-btn{padding:14px 28px;background:linear-gradient(135deg,var(--amber-500),var(--orange-500));color:white;border:none;border-radius:12px;font-family:var(--font);font-size:13px;font-weight:600;cursor:pointer;transition:all 0.3s;box-shadow:0 8px 24px -8px rgba(251,191,36,0.4)}
+        .stat-continue-btn:hover{transform:translateY(-2px);box-shadow:0 12px 28px -8px rgba(251,191,36,0.5)}
 
         /* Results */
-        .results{padding:20px 0}
-        .results-head{text-align:center;margin-bottom:28px}
-        .saboteur-reveal{margin-bottom:24px}
-        .saboteur-reveal-label{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-20);margin-bottom:16px}
-        .saboteur-icon-wrap{width:100px;height:100px;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(244,63,94,0.15),rgba(249,115,22,0.08));border:2px solid rgba(244,63,94,0.25);border-radius:28px;font-size:48px;animation:iconPulse 2s ease-in-out infinite}
+        .results{padding:10px 0}
+        @media(max-width:480px){.results{padding:5px 0}}
+        .results-head{text-align:center;margin-bottom:20px}
+        @media(max-width:480px){.results-head{margin-bottom:14px}}
+        .saboteur-reveal{margin-bottom:18px}
+        @media(max-width:480px){.saboteur-reveal{margin-bottom:12px}}
+        .saboteur-reveal-label{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-20);margin-bottom:12px}
+        .saboteur-icon-wrap{width:80px;height:80px;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(244,63,94,0.15),rgba(249,115,22,0.08));border:2px solid rgba(244,63,94,0.25);border-radius:24px;animation:iconPulse 2s ease-in-out infinite}
+        @media(max-width:480px){.saboteur-icon-wrap{width:70px;height:70px;margin-bottom:12px;border-radius:20px}}
+        .saboteur-icon-wrap svg{width:36px;height:36px;color:var(--rose-400)}
+        @media(max-width:480px){.saboteur-icon-wrap svg{width:32px;height:32px}}
         @keyframes iconPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
-        .saboteur-name{font-size:28px;font-weight:800;background:linear-gradient(135deg,var(--rose-400),var(--orange-400));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px;line-height:1.2}
-        .saboteur-tagline{font-size:14px;color:var(--text-50);max-width:300px;margin:0 auto;line-height:1.5;font-style:italic}
+        .saboteur-name{font-size:24px;font-weight:800;background:linear-gradient(135deg,var(--rose-400),var(--orange-400));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px;line-height:1.2}
+        @media(max-width:480px){.saboteur-name{font-size:22px}}
+        .saboteur-tagline{font-size:13px;color:var(--text-50);max-width:300px;margin:0 auto;line-height:1.45;font-style:italic}
+        @media(max-width:480px){.saboteur-tagline{font-size:12px}}
 
-        .impact-section{padding:24px;margin-bottom:18px}
-        .impact-title{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-20);margin-bottom:16px}
-        .impact-text{font-size:14px;color:var(--text-70);line-height:1.65}
+        .impact-section{padding:18px;margin-bottom:12px}
+        @media(max-width:480px){.impact-section{padding:14px;margin-bottom:10px}}
+        .impact-title{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-20);margin-bottom:12px}
+        .impact-text{font-size:13px;color:var(--text-70);line-height:1.55}
+        @media(max-width:480px){.impact-text{font-size:12px}}
 
-        .symptoms-section{padding:24px;margin-bottom:18px}
-        .symptoms-title{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-20);margin-bottom:16px}
-        .symptoms-list{display:flex;flex-direction:column;gap:10px}
-        .symptom{display:flex;align-items:flex-start;gap:12px;font-size:13px;color:var(--text-50);line-height:1.5}
-        .symptom::before{content:'';width:6px;height:6px;flex-shrink:0;margin-top:7px;background:var(--rose-400);border-radius:50%}
+        .symptoms-section{padding:18px;margin-bottom:12px}
+        @media(max-width:480px){.symptoms-section{padding:14px;margin-bottom:10px}}
+        .symptoms-title{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-20);margin-bottom:12px}
+        .symptoms-list{display:flex;flex-direction:column;gap:8px}
+        .symptom{display:flex;align-items:flex-start;gap:10px;font-size:12px;color:var(--text-50);line-height:1.45}
+        @media(max-width:480px){.symptom{font-size:11px;gap:8px}}
+        .symptom::before{content:'';width:5px;height:5px;flex-shrink:0;margin-top:6px;background:var(--rose-400);border-radius:50%}
 
-        .fix-section{padding:24px;background:linear-gradient(135deg,rgba(16,185,129,0.08),rgba(52,211,153,0.04));border:1px solid rgba(16,185,129,0.15);border-radius:20px;margin-bottom:18px;position:relative;overflow:hidden}
+        .fix-section{padding:18px;background:linear-gradient(135deg,rgba(16,185,129,0.08),rgba(52,211,153,0.04));border:1px solid rgba(16,185,129,0.15);border-radius:18px;margin-bottom:12px;position:relative;overflow:hidden}
+        @media(max-width:480px){.fix-section{padding:14px;border-radius:14px;margin-bottom:10px}}
         .fix-section::before{content:'';position:absolute;top:0;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,rgba(16,185,129,0.3),transparent)}
-        .fix-head{display:flex;align-items:center;gap:14px;margin-bottom:14px}
-        .fix-icon{width:42px;height:42px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--emerald-500),#059669);border-radius:12px;box-shadow:0 4px 16px -4px rgba(16,185,129,0.5)}
-        .fix-icon svg{width:20px;height:20px;color:white}
-        .fix-label{font-size:14px;font-weight:600;color:var(--text-100)}
-        .fix-text{font-size:13px;color:var(--text-50);line-height:1.65}
+        .fix-head{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+        .fix-icon{width:38px;height:38px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--emerald-500),#059669);border-radius:10px;box-shadow:0 4px 16px -4px rgba(16,185,129,0.5)}
+        @media(max-width:480px){.fix-icon{width:34px;height:34px;border-radius:9px}}
+        .fix-icon svg{width:18px;height:18px;color:white}
+        .fix-label{font-size:13px;font-weight:600;color:var(--text-100)}
+        .fix-text{font-size:12px;color:var(--text-50);line-height:1.55}
+        @media(max-width:480px){.fix-text{font-size:11px}}
 
         /* Comparison */
-        .comparison-section{padding:24px;margin-bottom:18px}
-        .comparison-title{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-20);margin-bottom:16px}
-        .comparison-row{display:flex;gap:12px}
-        .comparison-col{flex:1;padding:16px;background:var(--glass-1);border:1px solid var(--border-1);border-radius:14px}
+        .comparison-section{padding:18px;margin-bottom:12px}
+        @media(max-width:480px){.comparison-section{padding:14px;margin-bottom:10px}}
+        .comparison-title{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-20);margin-bottom:12px}
+        .comparison-row{display:flex;gap:10px}
+        @media(max-width:380px){.comparison-row{flex-direction:column;gap:8px}}
+        .comparison-col{flex:1;padding:12px;background:var(--glass-1);border:1px solid var(--border-1);border-radius:12px}
         .comparison-col.bad{border-color:rgba(244,63,94,0.2)}
         .comparison-col.good{border-color:rgba(16,185,129,0.2)}
-        .comparison-label{font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px}
+        .comparison-label{font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px}
         .comparison-col.bad .comparison-label{color:var(--rose-400)}
         .comparison-col.good .comparison-label{color:var(--emerald-400)}
-        .comparison-text{font-size:12px;color:var(--text-50);line-height:1.5;font-style:italic}
+        .comparison-text{font-size:11px;color:var(--text-50);line-height:1.45;font-style:italic}
 
         /* Pricing */
-        .pricing-section{padding:24px 0;margin-bottom:18px}
-        .pricing-header{text-align:center;margin-bottom:24px}
-        .pricing-title{font-size:20px;font-weight:700;background:linear-gradient(135deg,var(--text-100),var(--rose-300));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px}
-        .pricing-sub{font-size:13px;color:var(--text-35);line-height:1.5}
-        .pricing-cards{display:flex;flex-direction:column;gap:16px}
-        .plan-card{padding:24px;position:relative;transition:all 0.3s var(--ease)}
+        .pricing-section{padding:16px 0;margin-bottom:12px}
+        @media(max-width:480px){.pricing-section{padding:12px 0;margin-bottom:10px}}
+        .pricing-header{text-align:center;margin-bottom:18px}
+        @media(max-width:480px){.pricing-header{margin-bottom:14px}}
+        .pricing-title{font-size:18px;font-weight:700;background:linear-gradient(135deg,var(--text-100),var(--rose-300));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px}
+        @media(max-width:480px){.pricing-title{font-size:16px}}
+        .pricing-sub{font-size:12px;color:var(--text-35);line-height:1.45}
+        @media(max-width:480px){.pricing-sub{font-size:11px}}
+        .pricing-cards{display:flex;flex-direction:column;gap:12px}
+        @media(max-width:480px){.pricing-cards{gap:10px}}
+        .plan-card{padding:18px;position:relative;transition:all 0.3s var(--ease)}
+        @media(max-width:480px){.plan-card{padding:14px}}
         .plan-card:hover{transform:translateY(-4px)}
-        .plan-card.featured{border-color:var(--emerald-400);background:linear-gradient(145deg,rgba(16,185,129,0.12) 0%,var(--glass-1) 50%,var(--glass-2) 100%);margin-top:16px;overflow:visible}
+        .plan-card.featured{border-color:var(--emerald-400);background:linear-gradient(145deg,rgba(16,185,129,0.12) 0%,var(--glass-1) 50%,var(--glass-2) 100%);margin-top:14px;overflow:visible}
+        @media(max-width:480px){.plan-card.featured{margin-top:12px}}
         .plan-card.featured::before{background:linear-gradient(90deg,transparent,rgba(16,185,129,0.4),transparent)}
-        .plan-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);display:inline-flex;align-items:center;gap:6px;padding:6px 14px;background:linear-gradient(135deg,var(--emerald-500),#059669);border-radius:100px;font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:white;box-shadow:0 4px 16px -4px rgba(16,185,129,0.5)}
-        .plan-badge svg{width:10px;height:10px}
-        .plan-name{font-size:18px;font-weight:700;color:var(--text-100);margin-bottom:4px}
-        .plan-tagline{font-size:12px;color:var(--text-35);margin-bottom:16px}
-        .plan-price{display:flex;align-items:baseline;gap:4px;margin-bottom:20px}
-        .plan-amount{font-size:36px;font-weight:700;background:linear-gradient(135deg,var(--text-100),var(--emerald-300));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-        .plan-period{font-size:13px;color:var(--text-35)}
-        .plan-features{list-style:none;margin-bottom:24px}
-        .plan-features li{display:flex;align-items:flex-start;gap:10px;font-size:12px;color:var(--text-50);line-height:1.5;margin-bottom:10px}
+        .plan-badge{position:absolute;top:-10px;left:50%;transform:translateX(-50%);display:inline-flex;align-items:center;gap:5px;padding:5px 12px;background:linear-gradient(135deg,var(--emerald-500),#059669);border-radius:100px;font-size:8px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:white;box-shadow:0 4px 16px -4px rgba(16,185,129,0.5)}
+        .plan-badge svg{width:9px;height:9px}
+        .plan-name{font-size:16px;font-weight:700;color:var(--text-100);margin-bottom:3px}
+        @media(max-width:480px){.plan-name{font-size:15px}}
+        .plan-tagline{font-size:11px;color:var(--text-35);margin-bottom:12px}
+        @media(max-width:480px){.plan-tagline{font-size:10px;margin-bottom:10px}}
+        .plan-price{display:flex;align-items:baseline;gap:4px;margin-bottom:14px}
+        @media(max-width:480px){.plan-price{margin-bottom:12px}}
+        .plan-amount{font-size:30px;font-weight:700;color:var(--text-100)}
+        @media(max-width:480px){.plan-amount{font-size:26px}}
+        .plan-period{font-size:12px;color:var(--text-35)}
+        .plan-features{list-style:none;margin-bottom:18px}
+        @media(max-width:480px){.plan-features{margin-bottom:14px}}
+        .plan-features li{display:flex;align-items:flex-start;gap:8px;font-size:11px;color:var(--text-50);line-height:1.45;margin-bottom:8px}
+        @media(max-width:480px){.plan-features li{font-size:10px;margin-bottom:6px}}
         .plan-features li:last-child{margin-bottom:0}
-        .plan-features li::before{content:'';width:16px;height:16px;flex-shrink:0;margin-top:2px;background:linear-gradient(135deg,var(--emerald-500),var(--emerald-400));border-radius:50%;display:flex;align-items:center;justify-content:center;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E");background-size:10px;background-repeat:no-repeat;background-position:center}
-        .plan-btn{width:100%;padding:15px 24px;border:none;border-radius:14px;font-family:var(--font);font-size:14px;font-weight:600;cursor:pointer;transition:all 0.3s var(--ease);display:flex;align-items:center;justify-content:center;gap:8px}
-        .plan-btn svg{width:16px;height:16px}
+        .plan-features li::before{content:'';width:14px;height:14px;flex-shrink:0;margin-top:1px;background:linear-gradient(135deg,var(--emerald-500),var(--emerald-400));border-radius:50%;display:flex;align-items:center;justify-content:center;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E");background-size:9px;background-repeat:no-repeat;background-position:center}
+        .plan-btn{width:100%;padding:12px 20px;border:none;border-radius:12px;font-family:var(--font);font-size:13px;font-weight:600;cursor:pointer;transition:all 0.3s var(--ease);display:flex;align-items:center;justify-content:center;gap:6px}
+        @media(max-width:480px){.plan-btn{padding:11px 18px;font-size:12px;border-radius:10px}}
+        .plan-btn svg{width:14px;height:14px}
         .plan-btn-secondary{background:var(--glass-4);border:1px solid var(--border-2);color:var(--text-85)}
         .plan-btn-secondary:hover{background:var(--glass-5);border-color:var(--border-3)}
         .plan-btn-primary{background:linear-gradient(135deg,var(--emerald-500),#059669);color:white;box-shadow:0 1px 0 0 rgba(255,255,255,0.15) inset,0 8px 24px -8px rgba(16,185,129,0.5)}
         .plan-btn-primary:hover{transform:translateY(-2px);box-shadow:0 1px 0 0 rgba(255,255,255,0.2) inset,0 12px 32px -8px rgba(16,185,129,0.6)}
 
-        .share-section{text-align:center;padding:20px 0;border-top:1px solid var(--border-1);margin-top:8px}
-        .share-btn-link{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;background:var(--glass-2);border:1px solid var(--border-1);border-radius:10px;font-size:12px;font-weight:500;color:var(--text-50);cursor:pointer;transition:all 0.3s}
+        .share-section{text-align:center;padding:14px 0;border-top:1px solid var(--border-1);margin-top:6px}
+        @media(max-width:480px){.share-section{padding:12px 0}}
+        .share-btn-link{display:inline-flex;align-items:center;gap:6px;padding:10px 16px;background:var(--glass-2);border:1px solid var(--border-1);border-radius:8px;font-size:11px;font-weight:500;color:var(--text-50);cursor:pointer;transition:all 0.3s}
         .share-btn-link:hover{background:var(--glass-3);border-color:var(--border-2);color:var(--text-70)}
-        .share-btn-link svg{width:14px;height:14px}
+        .share-btn-link svg{width:13px;height:13px}
 
         /* Store Modal */
         .store-modal-bg{position:fixed;inset:0;background:rgba(0,0,0,0.8);backdrop-filter:blur(16px);z-index:300;opacity:0;visibility:hidden;pointer-events:none;transition:all 0.35s var(--ease)}
@@ -230,12 +320,12 @@
                 <div class="saboteur-preview">
                     <div class="saboteur-label">The 6 Silent Saboteurs</div>
                     <div class="saboteur-list">
-                        <div class="saboteur-chip"><span class="saboteur-chip-icon">😅</span><span class="saboteur-chip-text">The Over-Apologizer</span></div>
-                        <div class="saboteur-chip"><span class="saboteur-chip-icon">🤷</span><span class="saboteur-chip-text">The Hedge Master</span></div>
-                        <div class="saboteur-chip"><span class="saboteur-chip-icon">👻</span><span class="saboteur-chip-text">The Credit Deflector</span></div>
-                        <div class="saboteur-chip"><span class="saboteur-chip-icon">🙈</span><span class="saboteur-chip-text">The Conflict Avoider</span></div>
-                        <div class="saboteur-chip"><span class="saboteur-chip-icon">🙋</span><span class="saboteur-chip-text">The Permission Seeker</span></div>
-                        <div class="saboteur-chip"><span class="saboteur-chip-icon">🔇</span><span class="saboteur-chip-text">The Invisible Expert</span></div>
+                        <div class="saboteur-chip"><span class="saboteur-chip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></span><span class="saboteur-chip-text">The Over-Apologizer</span></div>
+                        <div class="saboteur-chip"><span class="saboteur-chip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></span><span class="saboteur-chip-text">The Hedge Master</span></div>
+                        <div class="saboteur-chip"><span class="saboteur-chip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"/></svg></span><span class="saboteur-chip-text">The Credit Deflector</span></div>
+                        <div class="saboteur-chip"><span class="saboteur-chip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/><path d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"/></svg></span><span class="saboteur-chip-text">The Conflict Avoider</span></div>
+                        <div class="saboteur-chip"><span class="saboteur-chip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 11l5-5m0 0l5 5m-5-5v12"/></svg></span><span class="saboteur-chip-text">The Permission Seeker</span></div>
+                        <div class="saboteur-chip"><span class="saboteur-chip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5.586 15.414l-2.121 2.122a1 1 0 000 1.414l2.586 2.586a1 1 0 001.414 0l2.121-2.122m3.535-3.535l2.121-2.121a1 1 0 000-1.415l-2.586-2.586a1 1 0 00-1.414 0L9.12 11.88M3 3l18 18"/></svg></span><span class="saboteur-chip-text">The Invisible Expert</span></div>
                     </div>
                 </div>
 
@@ -263,7 +353,7 @@
                 <div class="results-head">
                     <div class="saboteur-reveal">
                         <div class="saboteur-reveal-label">Your Silent Saboteur</div>
-                        <div class="saboteur-icon-wrap" id="saboteurIcon">😅</div>
+                        <div class="saboteur-icon-wrap" id="saboteurIcon"></div>
                         <div class="saboteur-name" id="saboteurName">The Over-Apologizer</div>
                         <div class="saboteur-tagline" id="saboteurTagline">"Sorry, just wanted to quickly mention..."</div>
                     </div>
@@ -310,12 +400,13 @@
                     <div class="pricing-cards">
                         <div class="plan-card glass-card">
                             <div class="plan-name">Starter</div>
-                            <div class="plan-tagline">Break your saboteur patterns</div>
+                            <div class="plan-tagline">Build the habit</div>
                             <div class="plan-price"><span class="plan-amount">$12.99</span><span class="plan-period">/ month</span></div>
                             <ul class="plan-features">
-                                <li>Unlimited AI practice sessions</li>
-                                <li>Pattern-breaking exercises</li>
-                                <li>Real-time delivery feedback</li>
+                                <li>Core Features: Essential Analytics</li>
+                                <li>15-min AI voice + unlimited text roleplay</li>
+                                <li>Basic feedback on clarity & structure</li>
+                                <li>3 avatars + daily goals</li>
                             </ul>
                             <button class="plan-btn plan-btn-secondary" onclick="selectPlan('Starter')">
                                 Start Free Trial
@@ -328,13 +419,15 @@
                                 Most Popular
                             </div>
                             <div class="plan-name">Pro</div>
-                            <div class="plan-tagline">Rewire your communication instincts</div>
-                            <div class="plan-price"><span class="plan-amount">$24.99</span><span class="plan-period">/ month</span></div>
+                            <div class="plan-tagline">Your full communication gym</div>
+                            <div class="plan-price"><span class="plan-amount">$17.99</span><span class="plan-period">/ month</span></div>
                             <ul class="plan-features">
-                                <li>Everything in Starter</li>
-                                <li>Deep pattern analysis</li>
-                                <li>Advanced scenario training</li>
-                                <li>Personalized coaching insights</li>
+                                <li>Double the Practice, Full Coach Suite</li>
+                                <li>Everything in Starter +</li>
+                                <li>30-min AI voice & all scenarios</li>
+                                <li>Live mid-conversation coaching + deep analytics</li>
+                                <li>10 premium avatars + multilingual</li>
+                                <li>Full history & reports</li>
                             </ul>
                             <button class="plan-btn plan-btn-primary" onclick="selectPlan('Pro')">
                                 Start Free Trial
@@ -363,7 +456,7 @@
         <div class="store-modal-title">Download Conversly</div>
         <div class="store-modal-plan" id="storeModalPlan">Pro Plan Selected</div>
         <div class="store-btns">
-            <a href="https://apps.apple.com/app/conversly" target="_blank" class="store-btn">
+            <a href="https://apps.apple.com/us/app/conversly-communication-gym/id6753739129" target="_blank" class="store-btn">
                 <div class="store-btn-icon">
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
                 </div>
@@ -373,7 +466,7 @@
                 </div>
                 <svg class="store-btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
-            <a href="https://play.google.com/store/apps/details?id=com.conversly" target="_blank" class="store-btn">
+            <a href="https://play.google.com/store/apps/details?id=com.conversly.app" target="_blank" class="store-btn">
                 <div class="store-btn-icon">
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 20.5v-17c0-.83.67-1.5 1.5-1.5.4 0 .77.15 1.06.44L17.1 11.5c.59.54.59 1.46 0 2L5.56 22.56c-.29.29-.66.44-1.06.44-.83 0-1.5-.67-1.5-1.5zm14.1-8.5L5 2.5v19l12.1-9.5zM20 12l-3-2.5v5l3-2.5z"/></svg>
                 </div>
@@ -388,77 +481,371 @@
 
 <script>
 const questions = [
+    // Q1 - Professional scenario
     {
         text: "You realize you made a small error in a report after submitting it. How do you address it?",
         options: [
-            { text: "\"Sorry! I'm so sorry, I just noticed I made a mistake. I feel terrible. Let me fix it right away.\"", saboteur: "apologizer" },
-            { text: "\"I think there might be an issue? Maybe? I could be wrong though.\"", saboteur: "hedger" },
-            { text: "\"The team caught an issue — we're fixing it now.\"", saboteur: "deflector" },
-            { text: "Fix it quietly and hope no one notices", saboteur: "avoider" },
-            { text: "\"Is it okay if I send a corrected version?\"", saboteur: "permission" },
-            { text: "Wait for someone else to bring it up first", saboteur: "invisible" }
+            { text: "Send a quick correction with context on why it matters", saboteur: "apologizer" },
+            { text: "Mention you noticed something that might need adjusting", saboteur: "hedger" },
+            { text: "Let the team know there's an update coming", saboteur: "deflector" },
+            { text: "Fix it quietly before anyone notices", saboteur: "avoider" },
+            { text: "Ask if it's okay to send a revised version", saboteur: "permission" },
+            { text: "Wait to see if anyone brings it up first", saboteur: "invisible" }
         ]
     },
+    // Q2 - Professional scenario
     {
         text: "You have a strong opinion in a meeting that differs from your manager's view. What do you do?",
         options: [
-            { text: "\"Sorry, I might be totally off base here, but...\"", saboteur: "apologizer" },
-            { text: "\"I kind of maybe think there could possibly be another angle?\"", saboteur: "hedger" },
-            { text: "Agree publicly, then vent to a colleague later", saboteur: "avoider" },
-            { text: "\"Would it be okay if I shared a different perspective?\"", saboteur: "permission" },
-            { text: "\"I've heard others mention a concern about this approach...\"", saboteur: "deflector" },
-            { text: "Stay silent — they'll figure it out eventually", saboteur: "invisible" }
+            { text: "Preface with acknowledgment before sharing your perspective", saboteur: "apologizer" },
+            { text: "Float a tentative alternative for consideration", saboteur: "hedger" },
+            { text: "Agree publicly, process privately later", saboteur: "avoider" },
+            { text: "Check if there's space to share a different angle", saboteur: "permission" },
+            { text: "Mention that others have raised similar concerns", saboteur: "deflector" },
+            { text: "Keep the thought to yourself for now", saboteur: "invisible" }
         ]
     },
+    // Q3 - Self-improvement scenario
+    {
+        text: "You've been working on improving a personal skill and someone asks about your progress. How do you respond?",
+        options: [
+            { text: "Downplay how much effort you've been putting in", saboteur: "apologizer" },
+            { text: "Say it's going okay, nothing special", saboteur: "hedger" },
+            { text: "Talk about the resources you've found helpful instead", saboteur: "deflector" },
+            { text: "Change the subject to something else", saboteur: "avoider" },
+            { text: "Ask if they really want to hear about it", saboteur: "permission" },
+            { text: "Give a brief answer and redirect the conversation", saboteur: "invisible" }
+        ]
+    },
+    // Q4 - Professional scenario
     {
         text: "A colleague takes credit for an idea you shared with them privately. How do you respond?",
         options: [
-            { text: "\"Sorry, I don't mean to cause drama, but I thought I mentioned that earlier?\"", saboteur: "apologizer" },
-            { text: "Let it go — it's not worth the conflict", saboteur: "avoider" },
-            { text: "\"Oh, the team has been thinking about this together.\"", saboteur: "deflector" },
-            { text: "\"I was sort of thinking something similar, maybe?\"", saboteur: "hedger" },
-            { text: "Wait to see if anyone else notices", saboteur: "invisible" },
-            { text: "\"Do you mind if I add some context since I suggested this earlier?\"", saboteur: "permission" }
+            { text: "Gently mention you'd brought this up earlier", saboteur: "apologizer" },
+            { text: "Let it go this time to avoid awkwardness", saboteur: "avoider" },
+            { text: "Note that the team has been thinking along these lines", saboteur: "deflector" },
+            { text: "Wonder aloud if this connects to earlier discussions", saboteur: "hedger" },
+            { text: "Wait to see if anyone else remembers", saboteur: "invisible" },
+            { text: "Ask if you can add context since you'd mentioned it before", saboteur: "permission" }
         ]
     },
+    // Q5 - Self-improvement scenario
     {
         text: "Your project succeeded because of your leadership. How do you respond when praised?",
         options: [
-            { text: "\"Oh, I didn't really do that much. The team did all the work.\"", saboteur: "deflector" },
-            { text: "\"Sorry, I don't deserve all the credit!\"", saboteur: "apologizer" },
-            { text: "\"I guess it went okay? We got a little lucky.\"", saboteur: "hedger" },
-            { text: "Mumble thanks and change the subject quickly", saboteur: "invisible" },
-            { text: "\"Is it okay to share what we learned?\"", saboteur: "permission" },
-            { text: "Deflect by immediately talking about next steps", saboteur: "avoider" }
+            { text: "Immediately redirect credit to the team", saboteur: "deflector" },
+            { text: "Express that you feel like you didn't do that much", saboteur: "apologizer" },
+            { text: "Say it went better than expected, got lucky", saboteur: "hedger" },
+            { text: "Accept briefly and quickly move on", saboteur: "invisible" },
+            { text: "Check if it's appropriate to share what you learned", saboteur: "permission" },
+            { text: "Deflect by immediately discussing what's next", saboteur: "avoider" }
         ]
     },
+    // Q6 - Professional scenario
     {
         text: "You need to give feedback to an underperforming team member. How do you approach it?",
         options: [
-            { text: "\"I'm sorry to bring this up, but I noticed a few things...\"", saboteur: "apologizer" },
-            { text: "\"There might be some areas that could maybe improve?\"", saboteur: "hedger" },
-            { text: "Hint at it and hope they pick up on the subtext", saboteur: "avoider" },
-            { text: "\"Is it okay if we discuss some feedback?\"", saboteur: "permission" },
-            { text: "\"A few people have mentioned some concerns...\"", saboteur: "deflector" },
-            { text: "Put it off until the next review cycle", saboteur: "invisible" }
+            { text: "Open by acknowledging this might be uncomfortable to bring up", saboteur: "apologizer" },
+            { text: "Suggest there might be some areas worth exploring", saboteur: "hedger" },
+            { text: "Drop subtle hints hoping they'll pick up on it", saboteur: "avoider" },
+            { text: "Ask if now is a good time to discuss some observations", saboteur: "permission" },
+            { text: "Mention that a few people have noticed some patterns", saboteur: "deflector" },
+            { text: "Wait until the formal review cycle", saboteur: "invisible" }
         ]
     },
+    // Q7 - Self-improvement scenario
+    {
+        text: "You're at a networking event and someone asks what you do. How do you describe yourself?",
+        options: [
+            { text: "Minimize your role or accomplishments", saboteur: "apologizer" },
+            { text: "Give a vague answer that undersells your expertise", saboteur: "hedger" },
+            { text: "Talk about your company or team instead of yourself", saboteur: "deflector" },
+            { text: "Give the shortest possible answer", saboteur: "invisible" },
+            { text: "Ask them first to avoid talking about yourself", saboteur: "avoider" },
+            { text: "Check if they want the short or long version", saboteur: "permission" }
+        ]
+    },
+    // Q8 - Professional scenario
     {
         text: "You're presenting your work to senior leadership. How do you open?",
         options: [
-            { text: "\"Sorry this is a bit rough, but here's what I have...\"", saboteur: "apologizer" },
-            { text: "\"This is kind of a preliminary idea that might work?\"", saboteur: "hedger" },
-            { text: "\"The team put this together...\"", saboteur: "deflector" },
-            { text: "Rush through it quickly to minimize exposure", saboteur: "invisible" },
-            { text: "\"If you don't mind, I'd like to walk you through...\"", saboteur: "permission" },
-            { text: "Skip the difficult parts to avoid tough questions", saboteur: "avoider" }
+            { text: "Acknowledge that this is still rough around the edges", saboteur: "apologizer" },
+            { text: "Frame it as a preliminary idea that might have potential", saboteur: "hedger" },
+            { text: "Emphasize the team's collective contribution", saboteur: "deflector" },
+            { text: "Move through it quickly to minimize exposure time", saboteur: "invisible" },
+            { text: "Ask if they'd prefer a walkthrough or high-level summary", saboteur: "permission" },
+            { text: "Avoid the controversial parts to prevent difficult questions", saboteur: "avoider" }
         ]
+    },
+    // Q9 - Self-improvement scenario
+    {
+        text: "You've achieved a significant personal milestone. How do you share the news?",
+        options: [
+            { text: "Mention it was mostly luck or good timing", saboteur: "apologizer" },
+            { text: "Say it's not as impressive as it might sound", saboteur: "hedger" },
+            { text: "Credit everyone who helped along the way", saboteur: "deflector" },
+            { text: "Keep it to yourself unless directly asked", saboteur: "invisible" },
+            { text: "Ask if people want to hear about it first", saboteur: "permission" },
+            { text: "Change the subject to avoid seeming like you're bragging", saboteur: "avoider" }
+        ]
+    },
+    // Q10 - Professional scenario
+    {
+        text: "A client is unhappy with something that wasn't your fault. How do you handle it?",
+        options: [
+            { text: "Take responsibility anyway to smooth things over", saboteur: "apologizer" },
+            { text: "Explain that there might have been some miscommunication", saboteur: "hedger" },
+            { text: "Redirect to the process or team that handled it", saboteur: "deflector" },
+            { text: "Let someone else deal with the conversation", saboteur: "avoider" },
+            { text: "Ask if you have permission to explain what happened", saboteur: "permission" },
+            { text: "Stay quiet and hope someone else steps in", saboteur: "invisible" }
+        ]
+    },
+    // Q11 - Self-improvement scenario
+    {
+        text: "You're asked to speak up about your expertise in a group setting. How do you respond?",
+        options: [
+            { text: "Qualify that you're still learning and might be wrong", saboteur: "apologizer" },
+            { text: "Offer a tentative opinion rather than a firm stance", saboteur: "hedger" },
+            { text: "Reference what experts in the field say instead", saboteur: "deflector" },
+            { text: "Keep your answer brief to avoid overexposure", saboteur: "invisible" },
+            { text: "Ask if they really want your take on this", saboteur: "permission" },
+            { text: "Defer to someone else in the group", saboteur: "avoider" }
+        ]
+    },
+    // Q12 - Professional scenario
+    {
+        text: "You disagree with a decision that's already been made. What do you do?",
+        options: [
+            { text: "Accept it and apologize for having had concerns", saboteur: "apologizer" },
+            { text: "Mention you had some thoughts but it's probably fine", saboteur: "hedger" },
+            { text: "Suggest the team had mixed feelings about it", saboteur: "deflector" },
+            { text: "Go along with it to avoid rocking the boat", saboteur: "avoider" },
+            { text: "Ask if it's still open for discussion", saboteur: "permission" },
+            { text: "Keep your opinion to yourself", saboteur: "invisible" }
+        ]
+    },
+    // Q13 - Self-improvement scenario
+    {
+        text: "Someone asks you for advice in an area where you have real expertise. How do you respond?",
+        options: [
+            { text: "Downplay your knowledge before offering guidance", saboteur: "apologizer" },
+            { text: "Offer tentative suggestions rather than clear direction", saboteur: "hedger" },
+            { text: "Point them to other resources instead", saboteur: "deflector" },
+            { text: "Give minimal advice to avoid overstepping", saboteur: "invisible" },
+            { text: "Ask if they're sure they want your input", saboteur: "permission" },
+            { text: "Suggest they might want to ask someone else", saboteur: "avoider" }
+        ]
+    },
+    // Q14 - Professional scenario
+    {
+        text: "You need to set a boundary with a colleague who keeps interrupting your work. What do you say?",
+        options: [
+            { text: "Apologize that you can't be as available as you'd like", saboteur: "apologizer" },
+            { text: "Hint that you've been pretty busy lately", saboteur: "hedger" },
+            { text: "Mention that the team is under deadline pressure", saboteur: "deflector" },
+            { text: "Just keep accepting the interruptions", saboteur: "avoider" },
+            { text: "Ask if it's okay to block off some focus time", saboteur: "permission" },
+            { text: "Find ways to be unavailable without saying anything", saboteur: "invisible" }
+        ]
+    },
+    // Q15 - Self-improvement scenario
+    {
+        text: "You're working on building a new habit and someone offers unsolicited advice. How do you respond?",
+        options: [
+            { text: "Thank them profusely even if the advice doesn't apply", saboteur: "apologizer" },
+            { text: "Say you'll think about it even though you won't", saboteur: "hedger" },
+            { text: "Talk about what your coach or mentor suggested instead", saboteur: "deflector" },
+            { text: "Just nod along to avoid confrontation", saboteur: "avoider" },
+            { text: "Ask if they mind if you share your current approach", saboteur: "permission" },
+            { text: "Listen quietly without engaging", saboteur: "invisible" }
+        ]
+    },
+    // Q16 - Professional scenario
+    {
+        text: "You've done extra work that saved a project. How do you communicate this to leadership?",
+        options: [
+            { text: "Mention it briefly while downplaying your role", saboteur: "apologizer" },
+            { text: "Allude to it without being too specific", saboteur: "hedger" },
+            { text: "Frame it as a team effort", saboteur: "deflector" },
+            { text: "Don't mention it and hope someone else does", saboteur: "invisible" },
+            { text: "Ask if it's appropriate to share what happened", saboteur: "permission" },
+            { text: "Skip mentioning it to avoid seeming self-promotional", saboteur: "avoider" }
+        ]
+    },
+    // Q17 - Self-improvement scenario
+    {
+        text: "You're asked to lead a workshop on something you know well. How do you accept?",
+        options: [
+            { text: "Warn them you might not be the best person for it", saboteur: "apologizer" },
+            { text: "Say you could probably put something together", saboteur: "hedger" },
+            { text: "Suggest co-facilitating with someone else", saboteur: "deflector" },
+            { text: "Accept but plan to keep it very short", saboteur: "invisible" },
+            { text: "Ask if they're sure they want you specifically", saboteur: "permission" },
+            { text: "Try to find a way to decline gracefully", saboteur: "avoider" }
+        ]
+    },
+    // Q18 - Professional scenario
+    {
+        text: "A meeting is going off-track and wasting everyone's time. What do you do?",
+        options: [
+            { text: "Apologize for interrupting before redirecting", saboteur: "apologizer" },
+            { text: "Gently suggest maybe we could refocus", saboteur: "hedger" },
+            { text: "Note that the team seems to want to get back on track", saboteur: "deflector" },
+            { text: "Stay quiet and let it play out", saboteur: "avoider" },
+            { text: "Ask if it would be okay to table this for later", saboteur: "permission" },
+            { text: "Wait for someone with more authority to step in", saboteur: "invisible" }
+        ]
+    },
+    // Q19 - Self-improvement scenario
+    {
+        text: "You've made a lifestyle change that's working well for you. How do you talk about it?",
+        options: [
+            { text: "Qualify that it might not work for everyone", saboteur: "apologizer" },
+            { text: "Say you've been trying something that seems okay", saboteur: "hedger" },
+            { text: "Credit the book or person who inspired you", saboteur: "deflector" },
+            { text: "Don't bring it up unless someone asks", saboteur: "invisible" },
+            { text: "Ask if they want to hear about it before sharing", saboteur: "permission" },
+            { text: "Keep it vague to avoid sounding preachy", saboteur: "avoider" }
+        ]
+    },
+    // Q20 - Professional scenario
+    {
+        text: "You're asked your opinion on a controversial topic at work. How do you respond?",
+        options: [
+            { text: "Apologize that you might have an unpopular view", saboteur: "apologizer" },
+            { text: "Give a balanced answer that doesn't commit to a position", saboteur: "hedger" },
+            { text: "Share what others in the industry are saying", saboteur: "deflector" },
+            { text: "Deflect to avoid taking a side", saboteur: "avoider" },
+            { text: "Ask if they really want your honest opinion", saboteur: "permission" },
+            { text: "Give a non-answer and move on", saboteur: "invisible" }
+        ]
+    },
+    // Q21 - Self-improvement scenario
+    {
+        text: "You've overcome a personal challenge and someone asks how you did it. What do you say?",
+        options: [
+            { text: "Minimize the difficulty of what you went through", saboteur: "apologizer" },
+            { text: "Say you're not sure, it just sort of worked out", saboteur: "hedger" },
+            { text: "Credit your support system or circumstances", saboteur: "deflector" },
+            { text: "Keep the details to yourself", saboteur: "invisible" },
+            { text: "Ask if they want the real story or the short version", saboteur: "permission" },
+            { text: "Change the subject to something lighter", saboteur: "avoider" }
+        ]
+    },
+    // Q22 - Professional scenario
+    {
+        text: "You're invited to a high-stakes meeting with executives you don't know. How do you prepare to contribute?",
+        options: [
+            { text: "Plan to stay quiet unless directly addressed", saboteur: "apologizer" },
+            { text: "Prepare tentative talking points just in case", saboteur: "hedger" },
+            { text: "Focus on supporting others' points rather than adding your own", saboteur: "deflector" },
+            { text: "Hope to blend into the background", saboteur: "invisible" },
+            { text: "Plan to ask if there's space for your input", saboteur: "permission" },
+            { text: "Attend but try not to draw attention to yourself", saboteur: "avoider" }
+        ]
+    },
+    // Q23 - Self-improvement scenario
+    {
+        text: "You're considering asking for a raise or promotion. How do you approach it?",
+        options: [
+            { text: "Open by acknowledging they might say no", saboteur: "apologizer" },
+            { text: "Ask vaguely about future opportunities", saboteur: "hedger" },
+            { text: "Focus on the value you bring to the team, not yourself", saboteur: "deflector" },
+            { text: "Keep waiting for the right moment that never comes", saboteur: "avoider" },
+            { text: "Ask if it's appropriate to discuss compensation", saboteur: "permission" },
+            { text: "Hope your work speaks for itself", saboteur: "invisible" }
+        ]
+    },
+    // Q24 - Professional scenario
+    {
+        text: "You notice a problem with a plan that no one else has mentioned. What do you do?",
+        options: [
+            { text: "Raise it apologetically as just a thought", saboteur: "apologizer" },
+            { text: "Mention there might possibly be something to consider", saboteur: "hedger" },
+            { text: "Say you've heard concerns from others about this", saboteur: "deflector" },
+            { text: "Assume someone else will catch it", saboteur: "avoider" },
+            { text: "Ask if it's okay to raise a potential concern", saboteur: "permission" },
+            { text: "Keep it to yourself and see what happens", saboteur: "invisible" }
+        ]
+    },
+    // Q25 - Self-improvement scenario
+    {
+        text: "You've developed expertise through years of work. How do you introduce yourself professionally?",
+        options: [
+            { text: "Downplay your experience level", saboteur: "apologizer" },
+            { text: "Use vague terms that undersell your depth", saboteur: "hedger" },
+            { text: "Focus on your organization's credentials instead", saboteur: "deflector" },
+            { text: "Keep introductions minimal", saboteur: "invisible" },
+            { text: "Ask what level of detail they want", saboteur: "permission" },
+            { text: "Avoid talking about yourself at length", saboteur: "avoider" }
+        ]
+    },
+    // Q26 - Professional scenario
+    {
+        text: "A peer dismisses your idea in a meeting. How do you respond?",
+        options: [
+            { text: "Back down and apologize for the confusion", saboteur: "apologizer" },
+            { text: "Say maybe you weren't clear enough", saboteur: "hedger" },
+            { text: "Note that the idea came from multiple sources", saboteur: "deflector" },
+            { text: "Drop it and move on", saboteur: "avoider" },
+            { text: "Ask if you can clarify what you meant", saboteur: "permission" },
+            { text: "Stay silent and let it go", saboteur: "invisible" }
+        ]
+    },
+    // Q27 - Self-improvement scenario
+    {
+        text: "You're asked to describe your biggest professional strength. What do you say?",
+        options: [
+            { text: "Qualify that you're still working on improving", saboteur: "apologizer" },
+            { text: "Give a modest answer that undersells you", saboteur: "hedger" },
+            { text: "Talk about what your team does well", saboteur: "deflector" },
+            { text: "Give the shortest possible answer", saboteur: "invisible" },
+            { text: "Ask if they want specifics or a general answer", saboteur: "permission" },
+            { text: "Redirect to discuss the role instead", saboteur: "avoider" }
+        ]
+    },
+    // Q28 - Professional scenario
+    {
+        text: "You've completed a major accomplishment. How do you update your professional profile or resume?",
+        options: [
+            { text: "Use modest language that understates the achievement", saboteur: "apologizer" },
+            { text: "Add it but keep the description vague", saboteur: "hedger" },
+            { text: "Emphasize the team's role over your own", saboteur: "deflector" },
+            { text: "Don't update it at all", saboteur: "invisible" },
+            { text: "Ask someone if it's worth adding", saboteur: "permission" },
+            { text: "Wait to see if anyone else mentions it first", saboteur: "avoider" }
+        ]
+    }
+];
+
+// Stat interstitials shown after every 5th question
+const statInterstitials = [
+    {
+        stat: "Research shows that professionals who use hedge words like 'just' or 'maybe' are rated <strong>33% less competent</strong> by their peers — even when their ideas are equally valid.",
+        source: "Journal of Language and Social Psychology"
+    },
+    {
+        stat: "Studies found that <strong>women apologize 2x more often</strong> than men in professional settings, and both genders perceive frequent apologizers as less confident leaders.",
+        source: "Psychological Science"
+    },
+    {
+        stat: "Visibility research shows that <strong>employees who advocate for their work</strong> are promoted 23% faster than equally performing peers who don't self-advocate.",
+        source: "Harvard Business Review"
+    },
+    {
+        stat: "Conflict avoidance at work correlates with <strong>47% higher burnout rates</strong> — suppressing concerns leads to accumulated stress that compounds over time.",
+        source: "Organizational Behavior and Human Decision Processes"
+    },
+    {
+        stat: "People who deflect credit for their work are <strong>remembered 40% less often</strong> when opportunities arise — your brain literally forgets their contributions.",
+        source: "Journal of Applied Psychology"
     }
 ];
 
 const saboteurs = {
     apologizer: {
-        icon: "😅",
+        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>',
         name: "The Over-Apologizer",
         tagline: "\"Sorry, just wanted to quickly mention...\"",
         impact: "Every unnecessary apology chips away at your authority. You're training people to see your contributions as impositions rather than value. Research shows chronic apologizers are perceived as less competent — even when their work is excellent.",
@@ -473,12 +860,12 @@ const saboteurs = {
         fix: "Replace automatic apologies with gratitude or direct statements. \"Sorry for the delay\" becomes \"Thanks for your patience.\" \"Sorry, but I disagree\" becomes \"I see it differently.\" Practice catching yourself for one week and you'll rewire the habit."
     },
     hedger: {
-        icon: "🤷",
+        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>',
         name: "The Hedge Master",
         tagline: "\"I kind of maybe think this could possibly work?\"",
         impact: "Qualifiers drain power from every statement. \"I think we should\" carries weight. \"I kind of maybe feel like perhaps we might want to consider\" does not. You're giving people permission to ignore you before you've finished speaking.",
         symptoms: [
-            "Using \"just\" before requests (\"I just wanted to...\") ",
+            "Using \"just\" before requests (\"I just wanted to...\")",
             "Ending statements as questions with upward inflection?",
             "Stacking qualifiers: kind of, sort of, maybe, possibly, perhaps",
             "Adding \"does that make sense?\" after every point"
@@ -488,7 +875,7 @@ const saboteurs = {
         fix: "Record yourself in one meeting. Count your hedges. Most people are shocked — the average is 8-12 per meeting. Then practice: make one declarative statement per meeting without qualifiers. Build from there."
     },
     deflector: {
-        icon: "👻",
+        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"/></svg>',
         name: "The Credit Deflector",
         tagline: "\"Oh, the team did everything. I barely helped.\"",
         impact: "You're not being humble — you're being invisible. When you deflect credit, people stop associating wins with you. Over time, your contributions disappear from organizational memory. Others get promoted while you wonder what happened.",
@@ -503,7 +890,7 @@ const saboteurs = {
         fix: "Practice the \"Yes, and\" response. When praised, say \"Thank you\" first (not \"Oh, it was nothing\"). Then add one specific contribution you made. Acknowledging your work isn't arrogance — it's accurate."
     },
     avoider: {
-        icon: "🙈",
+        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/><path d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"/></svg>',
         name: "The Conflict Avoider",
         tagline: "\"It's fine. Everything's fine. Really.\"",
         impact: "Every conversation you avoid compounds. That feedback you didn't give? Now it's a performance issue. That boundary you didn't set? Now you're burned out. Avoidance feels safer but creates bigger problems downstream.",
@@ -518,7 +905,7 @@ const saboteurs = {
         fix: "Start small. Pick one low-stakes conversation you've been avoiding. Script your opening line. Deliver it within 48 hours. The discomfort of the conversation is always less than the anxiety of avoiding it."
     },
     permission: {
-        icon: "🙋",
+        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 11l5-5m0 0l5 5m-5-5v12"/></svg>',
         name: "The Permission Seeker",
         tagline: "\"Would it be okay if I shared my thoughts?\"",
         impact: "You're positioning yourself as subordinate even when you have authority. Constantly asking permission signals that your contributions need approval to exist. Leaders don't ask if they can lead — they lead and invite feedback.",
@@ -533,7 +920,7 @@ const saboteurs = {
         fix: "Flip the script. Instead of asking permission to speak, speak and invite reaction. \"Here's my recommendation...\" followed by \"I'd welcome your thoughts\" puts you in a position of contribution, not supplication."
     },
     invisible: {
-        icon: "🔇",
+        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5.586 15.414l-2.121 2.122a1 1 0 000 1.414l2.586 2.586a1 1 0 001.414 0l2.121-2.122m3.535-3.535l2.121-2.121a1 1 0 000-1.415l-2.586-2.586a1 1 0 00-1.414 0L9.12 11.88M3 3l18 18"/></svg>',
         name: "The Invisible Expert",
         tagline: "\"They'll notice my work eventually.\"",
         impact: "Visibility is a skill, not vanity. The people who get promoted aren't always the most talented — they're the ones whose work is seen. If you're waiting to be discovered, you'll be waiting a long time. Your career depends on strategic self-advocacy.",
@@ -550,6 +937,8 @@ const saboteurs = {
 };
 
 let currentQ = 0;
+let statIndex = 0;
+let showingStat = false;
 let scores = { apologizer: 0, hedger: 0, deflector: 0, avoider: 0, permission: 0, invisible: 0 };
 
 const $ = id => document.getElementById(id);
@@ -561,12 +950,14 @@ function showScreen(id) {
 
 function startGame() {
     currentQ = 0;
+    statIndex = 0;
+    showingStat = false;
     scores = { apologizer: 0, hedger: 0, deflector: 0, avoider: 0, permission: 0, invisible: 0 };
     
-    // Setup progress dots
+    // Setup progress dots (show 7 dots representing milestones)
     const dotsWrap = $('topDots');
     dotsWrap.innerHTML = '';
-    for (let i = 0; i < questions.length; i++) {
+    for (let i = 0; i < 7; i++) {
         const dot = document.createElement('div');
         dot.className = 'topbar-dot';
         dotsWrap.appendChild(dot);
@@ -583,13 +974,21 @@ function loadQuestion() {
         return;
     }
     
+    // Check if we should show stat interstitial (after every 5th question)
+    if (currentQ > 0 && currentQ % 5 === 0 && !showingStat && statIndex < statInterstitials.length) {
+        showStatInterstitial();
+        return;
+    }
+    
+    showingStat = false;
+    
     const q = questions[currentQ];
     $('qNum').textContent = `Question ${currentQ + 1} of ${questions.length}`;
     $('questionText').textContent = q.text;
     
-    // Update dots
+    // Update dots (7 milestones for 28 questions = every 4 questions)
     document.querySelectorAll('.topbar-dot').forEach((dot, i) => {
-        dot.classList.toggle('filled', i < currentQ);
+        dot.classList.toggle('filled', i < Math.floor(currentQ / 4));
     });
     
     const wrap = $('optionsWrap');
@@ -609,6 +1008,76 @@ function loadQuestion() {
         btn.onclick = () => selectOption(btn, opt.saboteur);
         wrap.appendChild(btn);
     });
+    
+    // Add custom input option
+    const customWrap = document.createElement('div');
+    customWrap.className = 'custom-input-wrap';
+    customWrap.innerHTML = `
+        <div class="custom-input-container">
+            <input type="text" class="custom-input" placeholder="Or describe how you'd respond..." id="customAnswer">
+            <button class="custom-input-btn" onclick="submitCustomAnswer()" id="customBtn">Submit</button>
+        </div>
+    `;
+    wrap.appendChild(customWrap);
+    
+    // Enable/disable button based on input
+    setTimeout(() => {
+        const input = $('customAnswer');
+        const btn = $('customBtn');
+        input.addEventListener('input', () => {
+            btn.disabled = input.value.trim().length < 5;
+        });
+        btn.disabled = true;
+    }, 10);
+}
+
+function showStatInterstitial() {
+    showingStat = true;
+    const stat = statInterstitials[statIndex];
+    
+    const wrap = $('optionsWrap');
+    $('qNum').textContent = 'Did You Know?';
+    $('questionText').innerHTML = '';
+    
+    wrap.innerHTML = `
+        <div class="stat-interstitial glass-card">
+            <div class="stat-interstitial-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+            </div>
+            <div class="stat-interstitial-label">Research Insight</div>
+            <p class="stat-interstitial-text">${stat.stat}</p>
+            <p class="stat-interstitial-source">— ${stat.source}</p>
+            <button class="stat-continue-btn" onclick="continueFromStat()">Continue</button>
+        </div>
+    `;
+    
+    statIndex++;
+}
+
+function continueFromStat() {
+    // Don't reset showingStat here - let loadQuestion handle it after the check
+    loadQuestion();
+}
+
+function submitCustomAnswer() {
+    const input = $('customAnswer');
+    if (input.value.trim().length >= 5) {
+        // Analyze custom answer - assign to random saboteur with slight bias to less common ones
+        const saboteurKeys = Object.keys(scores);
+        const minScore = Math.min(...Object.values(scores));
+        const candidates = saboteurKeys.filter(k => scores[k] === minScore);
+        const chosen = candidates[Math.floor(Math.random() * candidates.length)];
+        
+        scores[chosen]++;
+        
+        document.querySelector('.custom-input-container').style.borderColor = 'var(--rose-400)';
+        document.querySelector('.custom-input-container').style.background = 'linear-gradient(135deg,rgba(244,63,94,0.12),rgba(249,115,22,0.06))';
+        
+        setTimeout(() => {
+            currentQ++;
+            loadQuestion();
+        }, 500);
+    }
 }
 
 function selectOption(btn, saboteur) {
@@ -620,7 +1089,7 @@ function selectOption(btn, saboteur) {
     setTimeout(() => {
         currentQ++;
         loadQuestion();
-    }, 600);
+    }, 500);
 }
 
 function showResults() {
@@ -630,8 +1099,8 @@ function showResults() {
     const dominant = Object.entries(scores).sort((a, b) => b[1] - a[1])[0][0];
     const s = saboteurs[dominant];
     
-    // Populate results
-    $('saboteurIcon').textContent = s.icon;
+    // Populate results with SVG icon
+    $('saboteurIcon').innerHTML = s.icon;
     $('saboteurName').textContent = s.name;
     $('saboteurTagline').textContent = s.tagline;
     $('impactText').textContent = s.impact;
@@ -651,16 +1120,50 @@ function showResults() {
     
     showScreen('resultsScreen');
     
-    window.gameResults = { saboteur: s.name, icon: s.icon };
+    window.gameResults = { saboteur: s.name, iconHtml: s.icon };
 }
 
-function shareResults() {
+async function shareResults() {
     const r = window.gameResults;
-    const text = `My Silent Saboteur: ${r.icon} ${r.saboteur}\n\nWhat communication pattern is quietly killing YOUR career?\n\nTake the 90-second diagnostic: ${location.href}`;
+    const shareUrl = window.location.href.split('?')[0];
+    const shareText = `I just discovered my Silent Saboteur: ${r.saboteur}\n\nWhat communication pattern is quietly holding YOU back?\n\nTake the free 90-second diagnostic:`;
+    
+    // Try native share first (mobile)
     if (navigator.share) {
-        navigator.share({ title: 'My Silent Saboteur', text, url: location.href }).catch(() => {});
-    } else {
-        navigator.clipboard.writeText(text).then(() => alert('Copied!')).catch(() => alert(text));
+        try {
+            await navigator.share({
+                title: 'My Silent Saboteur Result',
+                text: shareText,
+                url: shareUrl
+            });
+            return;
+        } catch (err) {
+            if (err.name !== 'AbortError') {
+                // Fall through to clipboard
+            } else {
+                return; // User cancelled
+            }
+        }
+    }
+    
+    // Fallback: copy to clipboard
+    const fullText = `${shareText}\n${shareUrl}`;
+    try {
+        await navigator.clipboard.writeText(fullText);
+        // Show success feedback
+        const btn = document.querySelector('.share-btn-link');
+        const originalHTML = btn.innerHTML;
+        btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Copied to clipboard!`;
+        btn.style.borderColor = 'var(--emerald-400)';
+        btn.style.color = 'var(--emerald-400)';
+        setTimeout(() => {
+            btn.innerHTML = originalHTML;
+            btn.style.borderColor = '';
+            btn.style.color = '';
+        }, 2000);
+    } catch (err) {
+        // Final fallback: prompt with text
+        prompt('Copy this to share your result:', fullText);
     }
 }
 
